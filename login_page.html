@@ -30,7 +30,7 @@
                     <hr/><span>or</span><hr/>
                 </div>
 
-                <button id="signup_btn" class="bluebtn">Sign up with phone or email</button>
+                <button id="signup" class="bluebtn">Sign up with phone or email</button>
         
                 <p class="terms">By signing up, you agree to the 
                     <a class="bluetext" href="#">Terms of Service</a> and 
@@ -39,7 +39,7 @@
         
                 <div class="signin_section">
                     <h4 class="subtitle">Already have an account?</h4>
-                    <button class="blackbtn">Sign in</button>
+                    <button id="signin" class="blackbtn">Sign in</button>
                 </div>
             </div> 
         </div>
@@ -68,10 +68,11 @@
         </ul>
     </footer>
 
-    <div id="reg_modal" class="modal">
+    <!--Start of registeration modal-->
+    <div id="signup_modal" class="modal">
         <!-- Modal content -->
         <div class="modal_content">
-            <span class="close">&times;</span>
+            <span id="close_signup" class="close">&times;</span>
 
             <h1>Create your account</h1>
             <div class="textfield">
@@ -95,13 +96,38 @@
                     <select class="bear-months"></select>
                     <select class="bear-dates"></select>
                 </div>
-                </div>                    
+            </div>                    
         </div>
 
         <button class="registerbtn">Register</button>
-
-
     </div>
+    <!--End of registeration modal-->
+
+    <!--Start of sign in modal-->
+    <div id="signin_modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal_content">
+            <span id="close_signin">&times;</span>
+
+            <img src="images/twitter_logo_white.png" width="50px" height="50px">
+
+            <h1>Sign in to Twitter</h1>
+
+            <div class="textfield">
+                <input type ="email" required>
+                <label>Email</label>
+            </div>       
+            
+            <div class="textfield">
+                <input type ="password" required>
+                <label>Password</label>
+            </div>
+
+            <button class="loginbtn">Register</button>
+            <h4>Don't have an account?<button class="textbtn">Sign up</button></h4>
+        </div>
+    </div>
+    <!--End of sign in modal-->
 
     <script src="js/calender.js"></script>
     <script src="js/login_script.js"></script>

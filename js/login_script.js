@@ -1,22 +1,39 @@
-var regModal = document.getElementById("reg_modal");
-var signup = document.getElementById("signup_btn");
-var span = document.getElementsByClassName("close")[0];
+const signinModal = document.getElementById("signin_modal");
+const signupModal = document.getElementById("signup_modal");
+const signinButton = document.getElementById("signin");
+const signupButton = document.getElementById("signup");
+const closeSignin = document.getElementById("close_signin");
+const closeSignup = document.getElementById("close_signup");
 
-// When the user clicks on the button, open the modal
-signup.onclick = function() {
-    regModal.style.display = "block";
+//When the user clicks on the button, open the modal
+signinButton.onclick = function() {
+    signinModal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-    regModal.style.display = "none";
+//When the user clicks on x, close the modal
+closeSignin.onclick = function() {
+    signinModal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
+//When the user clicks on the button, open the modal
+signupButton.onclick = function() {
+    signupModal.style.display = "block";
+}
+
+//When the user clicks on x, close the modal
+closeSignup.onclick = function() {
+    signupModal.style.display = "none";
+}
+
+//When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == regModal) {
-    regModal.style.display = "none";
-  }
+    if (event.target == signinModal){
+      signinModal.style.display = "none";
+    }
+  
+    if (event.target == signupModal) {
+      signupModal.style.display = "none";
+    }
 }
 
 //Adding drop down menus for date
