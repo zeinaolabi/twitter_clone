@@ -9,6 +9,7 @@ body{
     background-color: black;
 } 
 
+/*Start of Login Page*/
 .main_container{ 
     display: flex; 
     margin: 0; 
@@ -163,6 +164,7 @@ a:hover{
     text-decoration: underline;
 }
 
+/*Start of Registeration/Sign in design*/
 .modal{
     display: none;
     position: fixed;
@@ -199,7 +201,6 @@ a:hover{
     cursor: pointer;
 }
 
-/*Start of Registeration/Sign in design*/
 .modal_content h1{
     color: white;
 }
@@ -298,8 +299,112 @@ select{
     width: 100%;
     height: 5vh;
 }
+
+.textbtn{
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+    background: none;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color:#1A8CD8;
+    font-weight: normal;
+    margin: 0 5px;
+}
+
+.loginbtn{
+    width: 20vw;
+    height: 40px;
+}
+
+.signin_content{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+.signin_content img{
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.create_account{
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    margin-top: 5vh;
+    color: #767979;
+}
 /*End Registeration/Sign in design*/
- /*End of modal */
+/*End of modal */
+
+/*End of Login Page*/
+
+/*Start of feed page*/
+.left_side{
+    width: 30%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    border-right: 1px solid rgb(92, 92, 92);
+}
+
+.left_side .logo{
+    margin: 0;
+    padding: 0;
+}
+
+.icon{
+    width: 30px;
+    height: 30px;
+}
+
+.mid_side{
+    width: 40%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+}
+
+.right_side{
+    width: 30%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    border-left: 1px solid rgb(92, 92, 92);
+}
+  
+.search{
+    width: 16rem;
+    background-color: #212327;
+    border: 1px solid #212327;
+    outline: none;
+    border-radius: 50px;
+    padding: 1.6vh 2vw;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    margin-left: 2vw;
+    margin-top: 1vh;
+    font-family:Arial, FontAwesome;
+}
+
+.search:focus {
+    border:1px solid #1A8CD8;
+    color: white;
+    background-color: black;
+}
+/*End of feed page*/
+
+
+
 
 
 @media screen and (max-width:950px){

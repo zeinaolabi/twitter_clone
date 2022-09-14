@@ -96,18 +96,19 @@
                     <select class="bear-months"></select>
                     <select class="bear-dates"></select>
                 </div>
-            </div>                    
+            </div>  
+        </div>    
+        <button class="registerbtn">Register</button>              
         </div>
-
-        <button class="registerbtn">Register</button>
     </div>
     <!--End of registeration modal-->
 
     <!--Start of sign in modal-->
-    <div id="signin_modal" class="modal">
+    <div id="signin_modal" class="modal signin_modal">
         <!-- Modal content -->
         <div class="modal_content">
-            <span id="close_signin">&times;</span>
+        <div class="signin_content">
+            <span id="close_signin" class="close">&times;</span>
 
             <img src="images/twitter_logo_white.png" width="50px" height="50px">
 
@@ -123,8 +124,13 @@
                 <label>Password</label>
             </div>
 
-            <button class="loginbtn">Register</button>
-            <h4>Don't have an account?<button class="textbtn">Sign up</button></h4>
+            <button class="loginbtn">Log in</button>
+            <div class="create_account">
+                <p>Don't have an account? </p>
+                <button id="create_account" class="textbtn">Sign up</button>
+            </div>
+        </div>
+        </div>
         </div>
     </div>
     <!--End of sign in modal-->

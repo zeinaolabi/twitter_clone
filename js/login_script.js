@@ -2,6 +2,7 @@ const signinModal = document.getElementById("signin_modal");
 const signupModal = document.getElementById("signup_modal");
 const signinButton = document.getElementById("signin");
 const signupButton = document.getElementById("signup");
+const createButton = document.getElementById("create_account");
 const closeSignin = document.getElementById("close_signin");
 const closeSignup = document.getElementById("close_signup");
 
@@ -10,14 +11,20 @@ signinButton.onclick = function() {
     signinModal.style.display = "block";
 }
 
-//When the user clicks on x, close the modal
-closeSignin.onclick = function() {
-    signinModal.style.display = "none";
-}
-
 //When the user clicks on the button, open the modal
 signupButton.onclick = function() {
     signupModal.style.display = "block";
+}
+
+//When the user clicks on creating an account, sign in modal closes and sign up opens
+createButton.onclick = function (){
+    signinModal.style.display = "none";
+    signupModal.style.display = "block";
+}
+
+//When the user clicks on x, close the modal
+closeSignin.onclick = function() {
+    signinModal.style.display = "none";
 }
 
 //When the user clicks on x, close the modal
