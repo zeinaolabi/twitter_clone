@@ -443,6 +443,60 @@ select{
     color: white;
 }
 
+.feed_header{
+    padding: 2vh 1vw;
+    border-bottom: 1px solid #212327;
+}
+
+.tweet_area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tweet_area .profile_pic{
+    width: 55px;
+    height: 55px;
+    margin-right: 15px;
+}
+
+.tweet_input{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 90%;
+    height: 100px;
+    color: white;
+    font-size: 16px;
+    border-bottom: 2px solid black;
+}
+
+.tweet_input::placeholder{
+    font-size: 20px;
+}
+
+.tweet_input:focus{
+    border-bottom: 2px solid #212327;
+}
+
+.add_tweet{
+    margin-left: 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1vh;
+}
+
+.addtweet_btn{
+    background-color: #134D77;
+    color:rgb(125, 125, 125);
+    font-size: 14px;
+    font-weight: bold;
+    width: 5vw;
+    padding: 1vh 0;
+    margin: 0;
+}
+
 .right_side{
     width: 35%;
     height: 100vh;
@@ -462,7 +516,7 @@ select{
     padding: 1.4vh 2vw;
     -webkit-transition: width 0.4s ease-in-out;
     transition: width 0.4s ease-in-out;
-    margin-left: 2vw;
+    margin-left: 1.5vw;
     margin-top: 5px;
     font-family:Arial, FontAwesome;
 }
