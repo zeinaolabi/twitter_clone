@@ -7,34 +7,40 @@
     <title>Twitter. It's what's happening</title>
 
     <link rel="icon" href="images/twitter_logo.png" type="image/icon type" width="65%">
-    <link rel="stylesheet" href="styles/login_page.css">
+    <link rel="stylesheet" href="styles/style.css">
 </head>
 
 <body>
-    <div class="mainContainer"> 
-        <div class="leftSide">
+    <div class="main_container"> 
+        <div class="hero_side">
             <img src="images/twitter_background.png" alt="twitter background">
         </div>
     
-        <div class="rightSide">
+        <div class="login_side">
             <img class="logo" src="images/twitter_logo_white.png" alt="twitter logo">
     
-            <div class="rightSideContnet">
+            <div class="login_contnet">
                 <h1 class="title">Happening now</h1>
-                <h2 class="subtitle">Join twitter today.</h2>
+                <h2 class="subtitle">Join Twitter today.</h2>
     
-                <button class="whiteButton"><img src="images/google.png" alt="google image" width="8%">Sign up with google</button>
-                <button class="whiteButton"><img src="images/apple.png" alt="apple image" width="8%">Sign up with Apple</button>
-                <h3>or</h3>
-                <button class="blueButton">Sign up with phone or email</button>
+                <button class="whitebtn"><img src="images/google.png" alt="google image" width="8%">Sign up with google</button>
+                <button class="whitebtn"><img src="images/apple.png" alt="apple image" width="8%">Sign up with Apple</button>
+
+                <div class="divider">
+                    <hr/><span>or</span><hr/>
+                </div>
+
+                <button id="signup_btn" class="bluebtn">Sign up with phone or email</button>
         
-                <p>By signing up, you agree to the 
-                    <a class="blueText" href="#">Terms of Service</a> and 
-                    <a class="blueText" href="#">Privacy Policy</a>, including 
-                    <a class="blueText" href="#">Cookie Use</a>.</p>
+                <p class="terms">By signing up, you agree to the 
+                    <a class="bluetext" href="#">Terms of Service</a> and 
+                    <a class="bluetext" href="#">Privacy Policy</a>, including 
+                    <a class="bluetext" href="#">Cookie Use</a>.</p>
         
-                <h3 class="subtitle">Already have an account?</h3>
-                <button class="blackButton">Sign in</button>
+                <div class="signin_section">
+                    <h4 class="subtitle">Already have an account?</h4>
+                    <button class="blackbtn">Sign in</button>
+                </div>
             </div> 
         </div>
     </div>
@@ -61,5 +67,43 @@
             <li><a href="#">© 2022 Twitter, Inc.</a></li>
         </ul>
     </footer>
+
+    <div id="reg_modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal_content">
+            <span class="close">&times;</span>
+
+            <h1>Create your account</h1>
+            <div class="textfield">
+                <input type ="text" required>
+                <label>Name</label>
+            </div>
+
+            <div class="textfield">
+                <input type ="email" required>
+                <label>Email</label>
+            </div>
+
+            <div class="date">
+                <h5>Date of birth</h5>
+                <p>This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</p>
+                <div class="dropdown">
+
+                <!--Drop down menus to be added on JS-->
+                <div class="dropdown">
+                    <select class="bear-years"></select>
+                    <select class="bear-months"></select>
+                    <select class="bear-dates"></select>
+                </div>
+                </div>                    
+        </div>
+
+        <button class="registerbtn">Register</button>
+
+
+    </div>
+
+    <script src="js/calender.js"></script>
+    <script src="js/login_script.js"></script>
 </body>
 </html>

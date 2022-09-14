@@ -9,7 +9,7 @@ body{
     background-color: black;
 } 
 
-.mainContainer{ 
+.main_container{ 
     display: flex; 
     margin: 0; 
     height: 100%; 
@@ -19,19 +19,19 @@ h2{
     font-size: 2rem;
 }
 
-.leftSide{ 
+.hero_side{ 
     width: 55%; 
     display: flex; 
     justify-content: center; 
     align-items: center; 
 } 
 
-.leftSide img{ 
+.hero_side img{ 
     width: 100%; 
     height: 100%;
 } 
 
-.rightSide{ 
+.login_side{ 
     width: 45%; 
     color: white; 
     display: flex;
@@ -51,6 +51,7 @@ button{
     font-weight: bold;
     border: none;
     display: flex;
+    outline: none;
     justify-content: center;
     align-items: center;
 }
@@ -62,7 +63,7 @@ button{
     filter: brightness(85%);
 }
 
-.rightSideContent{
+.login_content{
     display: flex;
     flex-direction: column;
     padding-left: 1rem;
@@ -95,18 +96,18 @@ hr{
     filter: brightness(50%);
 }
 
-.blueText{
+.bluetext{
     color: #1A8CD8;
 }
 
-.blueButton{
+.bluebtn{
     background-color: #2991d7;
     color: white;
     margin-top: 0;
     padding: 0.8rem
 }
 
-.blueButton:hover{
+.bluebtn:hover{
     background-color: #1A8CD8;
 }
 
@@ -117,11 +118,11 @@ hr{
     color: #595D61;
 }
 
-.signinSection{
+.signin_section{
     padding-top: 4.5rem;
 }
 
-.blackButton{
+.blackbtn{
     background-color: black;
     border: 1px solid #536371;
     color: #1A8CD8;
@@ -129,7 +130,7 @@ hr{
     padding: 0.8rem
 }
 
-.blackButton:hover{
+.blackbtn:hover{
     background-color: #061019;
 }
 
@@ -149,7 +150,8 @@ ul{
 }
 
 li{
-    padding: 0 8px;
+    margin: 1rem 0;
+    padding: 0 0.5rem;
 }
 
 a{
@@ -161,19 +163,158 @@ a:hover{
     text-decoration: underline;
 }
 
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+  }
+  
+.modal_content{
+    background-color: black;
+    margin: 10% auto;
+    padding: 5vw;
+    border: none;
+    width: 28rem;
+    height: 29rem;
+    border-radius: 20px;
+}
+  
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/*Start of Registeration/Sign in design*/
+.modal_content h1{
+    color: white;
+}
+
+.textfield{
+    position: relative;
+    border-radius: 5px;
+    margin: 2vh 0;
+}
+
+.textfield input{
+    width: 100%;
+    padding: 0.5vh 0.5vw;
+    height: 45px;
+    font-size: 16px;
+    background: none;
+    outline: none;
+    color: white;
+    border: 1px solid rgb(92, 92, 92);
+    border-radius: 5px;
+}
+
+.textfield input:focus{
+    border: 2px solid #165F93;
+}
+
+.textfield label{
+    position: absolute;
+    top: 35%;
+    left: 5px;
+    color: rgb(92, 92, 92);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.textfield input:focus ~ label,
+.textfield input:valid ~ label{
+    padding-top:5px;
+    top: -0.5px;
+    color: #165F93;
+    font-size: 14px;
+}
+
+.textfield input:focus ~ span::before,
+.textfield input:valid ~ span::before{
+    width: 100%;
+}
+
+.date{
+    color: white;
+    margin-top: 6vh;
+}
+
+.date p{
+    color: grey;
+    font-size: 14px;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+}
+
+.dropdown{
+    display: flex;
+    flex-direction: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+select{
+    padding: 1vh 0.5vw;
+    height: 45px;
+    font-size: 16px;
+    background: none;
+    outline: none;
+    color: white;
+    border: 1px solid rgb(92, 92, 92);
+    border-radius: 5px; 
+}
+
+.bear-years{
+    width: 45%;
+}
+
+.bear-months{
+    width: 30%;
+}
+
+.bear-dates{
+    width: 20%;
+}
+
+.registerbtn{
+    background-color: #767979;
+    margin-top: 10vh;
+    font-size: 18px;
+    width: 100%;
+    height: 5vh;
+}
+/*End Registeration/Sign in design*/
+ /*End of modal */
+
+
 @media screen and (max-width:950px){
-    .mainContainer{
+    .main_container{
         flex-direction: column;
     }
     
-    .rightSide{
+    .login_side{
         order: 1;
         margin-bottom: 3rem;
         height: 57%;
         padding-left: 15%;
     }
 
-    .leftSide{
+    .hero_side{
         width: 100%;
         height: 100%;
         align-items: flex-end;
@@ -205,7 +346,7 @@ a:hover{
 }
 
 @media screen and (max-width:500px){
-    .rightSide{
+    .login_side{
         padding-left: 2rem;
     }
 }
