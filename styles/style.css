@@ -351,6 +351,7 @@ select{
     justify-content: space-between;
     color: white;
     border-right: 1px solid #212327;
+    position: sticky;
 }
 
 .left_side .logo{
@@ -405,8 +406,8 @@ select{
 
 .profile_pic{
     border-radius: 50%;
-    width: 45px;
-    height: 45px;
+    width: 55px;
+    height: 55px;
 }
 
 .profilebtn{
@@ -424,6 +425,12 @@ select{
     padding-right: 2vw;
 }
 
+.profilebtn img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
 .username{
     font-size: 12px;
     color:#767979;
@@ -439,8 +446,8 @@ select{
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     color: white;
+    overflow: scroll;
 }
 
 .feed_header{
@@ -497,6 +504,60 @@ select{
     margin: 0;
 }
 
+.tweet{
+    padding: 2vh 1vw;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #212327;
+}
+
+.tweet_content{
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.tweet_user{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.tweet_text{
+    font-size: 14px;
+}
+
+.tweet_image{
+    margin-top: 10px;
+    width: 100%;
+    max-height: 100%;
+    border-radius: 20px;
+    border: 1px solid #212327
+}
+
+.actions{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 12px;
+    color:rgb(125, 125, 125)
+}
+
+.like_btn{
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: black;
+    margin-right: 5px
+}
+
+.like_btn:hover{
+    background-color: rgb(193, 82, 102);
+    opacity: 50%;
+}
+
+.likes_number{
+    margin-top: 15px;
+}
+
 .right_side{
     width: 35%;
     height: 100vh;
@@ -505,6 +566,7 @@ select{
     justify-content: space-between;
     color: white;
     border-left: 1px solid #212327;
+    position: sticky;
 }
   
 .search{
