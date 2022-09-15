@@ -241,6 +241,7 @@ a:hover{
     padding-top:5px;
     top: -0.5px;
     color: #165F93;
+    transition: 0.2s;
     font-size: 14px;
 }
 
@@ -593,11 +594,110 @@ select{
     color: white;
     background-color: black;
 }
+  
+.tweet_modal_content{
+    background-color: rgb(16, 16, 16);
+    margin: 10% auto;
+    padding: 2vw;
+    border: none;
+    width: 28rem;
+    height: 12rem;
+    border-radius: 20px;
+}
+
+.tweet_modal_content .tweet_input{
+    border-bottom: 2px solid rgb(16, 16, 16);
+}
+
+.tweet_modal_content .tweet_input:focus{
+    border-bottom: 2px solid #212327;
+}
+
+/*Logout Pop out design*/
+/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+  
+.popup .popuptext {
+    visibility: hidden;
+    width: 15vw;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    right: 0;
+    margin-right: 10px;
+    box-shadow: 1px 1px 4px #595D61;
+    display: flex;
+    flex-direction: column;
+}
+  
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black;
+    box-shadow: #555;
+}
+  
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+.account_info{
+    display: flex;
+    flex-direction: row;
+}
+
+.logout{
+    margin-top: 1vh;
+    width: 100%;
+    height: 50px;
+    border-radius: 0;
+    padding: 0;
+    background-color: transparent;
+    color:white;
+    text-align: left;
+    font-weight: normal;
+    justify-content: left;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.logout .username{
+    color:white;
+    padding-left: 5px;
+}
+
+.logout:hover{
+    background-color: #0e0e0e;
+}
+  
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+  
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+/*End of Popup*/
 /*End of feed page*/
-
-
-
-
 
 @media screen and (max-width:950px){
     .main_container{

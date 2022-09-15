@@ -17,16 +17,28 @@
                 <button class="mainpage_btn"><img src="images/twitter_logo_white.png" width="40px" height="40px"></button>
                 <button class="pages"><img class="icon" src="images/home.png"> Home</button>
                 <button class="pages"><img class="icon" src="images/profile.png">Profile</button>
-                <button class="bluebtn tweetbtn">Tweet</button>
+                <button id="showtweet_btn" class="bluebtn tweetbtn">Tweet</button>
             </div>
 
-            <button class="pages profilebtn">
-                <img src="images/batman_profile.jpeg" alt="profile image">
-                <p>Batman<br/>
-                <span class="username">@BruceWayne</span></p>
- 
-                <span>...</span>
-            </button>
+            <div class="popup">
+                <button id="popup_btn" class="pages profilebtn">
+                    <img src="images/batman_profile.jpeg" alt="profile image">
+                    <p>Batman<br/>
+                    <span class="username">@BruceWayne</span></p>
+     
+                    <span>...</span>
+                </button>
+                <div class="popuptext" id="myPopup">
+                    <div class="account_info">
+                        <img class="profile_pic" src="images/batman_profile.jpeg" alt="profile image">
+                        <p class="tweet_user">Batman<br/>
+                            <span class="username">@BruceWayne</span></p>
+                    </div>
+
+                    <button class="logout">Log out <span class="username">@BruceWayne</span></button>
+
+                </div>
+            </div>
         </div>
 
         <div class="mid_side">
@@ -138,12 +150,18 @@
 
         <div class="right_side">
             <input class="search" type="text" name="search" placeholder="&#xF002;    Search Twitter">
+
+            <div class="search_result">
+                
+            </div>
         </div>
     </div>
     
     <div id="tweet_modal" class="modal">
         <!-- Modal content -->
-        <div class="modal_content">
+        <div class="tweet_modal_content">
+            <span id="close_tweet" class="close">&times;</span>
+
             <div class="tweet_area">
                 <img class="profile_pic" src="images/batman_profile.jpeg" alt="profile image">
                 <input class="tweet_input" type="text" placeholder="What's happening?">
@@ -155,7 +173,9 @@
 
                 <button class="addtweet_btn">Tweet</button>
             </div>
-        </div>
+        </div>    
     </div>
+
+    <script src="js/feed_script.js"></script>
 </body>
 </html>
