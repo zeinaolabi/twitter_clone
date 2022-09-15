@@ -699,6 +699,107 @@ select{
 /*End of Popup*/
 /*End of feed page*/
 
+/*Start of Profile page*/
+.top_bar{
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+    margin-top: 10px
+}
+
+.back{
+    background-color: transparent;
+    color: white;
+    width: 40px;
+    height: 40px;
+    font-weight: normal;
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+    margin-right: 2vw;
+}
+
+.back:hover{
+    background-color:#212327 ;
+}
+
+.back .icon{
+    padding: 0;
+}
+
+.tweets_number{
+    font-size: 12px;
+    color: #767979;
+}
+
+.profile_header{
+    border-bottom: 1px solid #212327;
+    height: fit-content;
+}
+
+.profile{
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.cover{
+    position: relative;
+    top: 15px;
+    left: 0;
+    height: 200px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.profile_image{
+    position: absolute;
+    top: 160px;
+    left: 10px;
+    width: 8vw;
+    height: 14vh;
+    border-radius: 50%;
+    border: 5px solid black;
+}
+
+.profile_content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.edit_profile{
+    margin-left: auto;
+    width: fit-content;
+    padding: 1vh 1vw;
+    color: white;
+    margin-right: 5px
+}
+
+.profile_info{
+    margin-top: 2vh;
+    padding: 2vh 1vw;
+}
+
+.bio{
+    font-size: 14px;
+    margin: 1vh 0;
+}
+
+.followers{
+    font-size: 14px;
+    color:#595D61;
+}
+
+.followers_count{
+    font-weight: bold;
+    color: white;
+}
+
+/*End of Profile page*/
+
 @media screen and (max-width:950px){
     .main_container{
         flex-direction: column;
