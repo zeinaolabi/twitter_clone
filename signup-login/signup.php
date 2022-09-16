@@ -59,10 +59,16 @@ $query = $mysqli->prepare("INSERT INTO `users` ( `username`, `email`, `password`
 $query->bind_param("ssss", $username, $email, $password, $birth_date);
 $query->execute();
 
-$array_response = [];
-$array_response["status"] = "SIGNED UP SUCCESSFULLY";
-$json_response = json_encode($array_response);
-echo $json_response;
+$query = $mysqli->prepare("SELECT email, password  FROM users WHERE email = ? ");
+$query->bind_param("s", $email);
+$query->execute();
+$array = $query->get_result();
+$response = [];
+while($a = $array->fetch_assoc()){
+    $response[] = $a;
+}
+$json = json_encode($response);
+echo $json;
 
 $query->close();
 $mysqli->close();

@@ -27,13 +27,13 @@ if(isset($_POST["password"])  && !empty($_POST["password"] )){
     die($json_response);
 }
 // prepares an SQL statement for execution
-$query = $mysqli->prepare("SELECT email, password  FROM users WHERE email = ? AND password = ?");
+$query = $mysqli->prepare("SELECT id, email, password  FROM users WHERE email = ? AND password = ?");
 $query->bind_param("ss", $email, $password);
 $query->execute();
 
 $query->store_result();
 $num_rows = $query->num_rows;
-$query->bind_result($email, $password);
+$query->bind_result($id, $email, $password);
 $query->fetch();
 
 // return response
