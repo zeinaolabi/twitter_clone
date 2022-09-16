@@ -1,4 +1,5 @@
 //Initialize variables
+//Binding values
 const signupAPI = "http://localhost/twitter_test/signup.php";
 const signinAPI = "http://localhost/twitter_test/signin.php";
 const signinModal = document.getElementById("signin_modal");
@@ -18,18 +19,16 @@ const newUserPass= document.getElementById("new_password");
 const registerButton = document.getElementById("register");
 const signinError = document.getElementById("signin_error");
 const signupError = document.getElementById("signup_error");
+const year = document.getElementById('year');
+const month = document.getElementById('month');
+const day = document.getElementById('day');
 let errorMessage = "";
 
-//Adding drop down menus for date
-dates('option');
-months('option');
-years('option', 1990, 2022);
-
-//When the registration button is clicked, validate input 
+//When the login button is clicked, validate input 
 loginButton.addEventListener("click", (event)=>{
     //If one of the functions return false, stop
     if(!validateEmail(userEmail.value) || !validatePassword(userPass.value)){
-        signinError.textContent = errorMessage ;
+        signinError.textContent = errorMessage;
         return
     }
 
@@ -37,7 +36,8 @@ loginButton.addEventListener("click", (event)=>{
     fetch(signupAPI, {
         method: 'POST',
         body: new URLSearchParams({ "email": newUserEmail.value,
-        "password": newUserPass.value}),
+        "password": newUserPass.value,
+        "birth_date": date}),
     })
     .then(response=>response.json())
     .then(data => error.textContent = data.success)
@@ -45,9 +45,15 @@ loginButton.addEventListener("click", (event)=>{
 
 //When the registration button is clicked, validate input 
 registerButton.addEventListener("click", (event)=>{
+    //Get value from dropdown menu
+    const chosenYear = year.options[year.selectedIndex];
+    const chosenMonth = month.options[month.selectedIndex];
+    const chosenDay = day.options[day.selectedIndex];
+    const date = `${chosenYear.value}-${chosenMonth.value}-${chosenDay.value}`;
+
     //If one of the functions return false, stop
-    console.log(newUserName.value);
-    if(!validateName(newUserName.value) || !validateEmail(newUserEmail.value) || !validatePassword(newUserPass.value)){
+    if(!validateName(newUserName.value) || !validateEmail(newUserEmail.value) || 
+    !validatePassword(newUserPass.value || !validateDate(chosenYear, chosenMonth, chosenYear))){
         signupError.textContent = errorMessage;
         return
     }
@@ -57,7 +63,8 @@ registerButton.addEventListener("click", (event)=>{
         method: 'POST',
         body: new URLSearchParams({ "username": newUserName.value,
         "email": newUserEmail.value,
-        "password": newUserPass.value}),
+        "password": newUserPass.value,
+        "date": newUserPass.value}),
     })
     .then(response=>response.json())
     .then(data => error.textContent = data.success)
@@ -139,3 +146,65 @@ function validatePassword(password){
     return true
 }
 
+function validateDate(year, month, day){
+    //Check if a date was selected
+    if(year == "Year" || month == "Month" || day == "Day"){
+        errorMessage = "Error: Missing field" 
+        return false
+    }
+    return true
+}
+
+//Create a year drop down menu
+const yearDropdown = () => {
+    let year_start = 1900;
+    let year_end = (new Date).getFullYear();
+
+    let option = '';
+    option = '<option>Year</option>';
+
+    //Adding options from 1900 until current year
+    for (let i = year_start; i <= year_end; i++) {
+        option += '<option value="' + i + '">' + i + '</option>';
+    }
+
+    year.innerHTML = option;
+};
+
+//Create a month drop down menu
+const monthDropdown = () => {
+    let months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    var month_selected = (new Date).getMonth();
+    var option = '';
+    option = '<option>Month</option>';
+
+    //Adding an option for each month
+    for (let i = 0; i < months.length; i++) {
+        let month_number = (i + 1);
+
+        //Add 0 for before value single digited numbers
+        let month = (month_number <= 9) ? '0' + month_number : month_number;
+        option += '<option value="' + month + '">' + months[i] + '</option>';
+    }
+    month.innerHTML = option;
+};
+
+//Create a day drop down menu 
+const dayDropdown = () => {
+    let option = '';
+    option = '<option>Day</option>'; // first option
+
+    //Adding an option for each day
+    for (let i = 1; i < 32; i++) {
+        //Add 0 before value for single digited numbers
+        let day = (i <= 9) ? '0' + i : i;
+
+        option += '<option value="' + day + '">' + day + '</option>';
+    }
+    day.innerHTML = option;
+};
+
+//Run functions
+dayDropdown();
+monthDropdown();
+yearDropdown();
