@@ -183,7 +183,7 @@ a:hover{
     padding: 5vw;
     border: none;
     width: 28rem;
-    height: 29rem;
+    height: 31rem;
     border-radius: 20px;
 }
   
@@ -224,7 +224,7 @@ a:hover{
 }
 
 .textfield input:focus{
-    border: 2px solid #165F93;
+    border: 1px solid #165F93;
 }
 
 .textfield label{
@@ -295,7 +295,7 @@ select{
 
 .registerbtn{
     background-color: #767979;
-    margin-top: 6vh;
+    margin-top: 4vh;
     font-size: 18px;
     width: 100%;
     height: 5vh;
@@ -337,6 +337,12 @@ select{
     font-size: 14px;
     margin-top: 5vh;
     color: #767979;
+}
+
+.error{
+    color: red;
+    text-align: center;
+    margin-top: 10px;
 }
 /*End Registeration/Sign in design*/
 /*End of modal */
@@ -890,8 +896,35 @@ select{
     }
 }
 
-@media screen and (max-width:500px){
+@media screen and (max-width:680px){
     .login_side{
         padding-left: 2rem;
+    }
+
+    .modal_content{
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 100%;
+    }
+
+    .signin_content{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        color: white;
+    }
+
+    .signup_content{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        color: white;
+    }
+
+    .registerbtn{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
     }
 }

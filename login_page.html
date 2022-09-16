@@ -80,6 +80,7 @@
     <div id="signup_modal" class="modal">
         <!-- Modal content -->
         <div class="modal_content">
+        <div class="signup_content">
             <span id="close_signup" class="close">&times;</span>
 
             <h1>Create your account</h1>
@@ -91,7 +92,7 @@
             <div class="textfield">
                 <input id="new_email" type ="email" required>
                 <label>Email</label>
-            </div>
+            </div> 
 
             <div class="textfield">
                 <input id="new_password" type ="password" required>
@@ -109,9 +110,11 @@
                     <select class="bear-months"></select>
                     <select class="bear-dates"></select>
                 </div>
-            </div>  
+            </div> 
+        </div> 
         </div>    
-        <button id="register" class="registerbtn">Register</button>              
+        <button id="register" class="registerbtn">Register</button>  
+        <h4 class="error" id="signup_error"></h4>            
         </div>
     </div>
     <!--End of registeration modal-->
@@ -130,7 +133,7 @@
             <div class="textfield">
                 <input id="email" type ="email" required>
                 <label>Email</label>
-            </div>       
+            </div> 
             
             <div class="textfield">
                 <input id="password" type ="password" required>
@@ -142,6 +145,7 @@
                 <p>Don't have an account? </p>
                 <button id="create_account" class="textbtn">Sign up</button>
             </div>
+            <h4 class="error" id="signin_error"></h4> 
         </div>
         </div>
         </div>
