@@ -46,26 +46,17 @@ if(isset($_POST["password"])){
         die($json_response);
 }; 
 
-// first-name condition script
-if(isset($_POST["first_name"])){ 
-    $first_name = $_POST["first_name"];
+if(isset($_POST["birth_date"]) && !empty($_POST["birth_date"])){ 
+    $birth_date = $_POST["birth_date"];
 }else{
-    $array_response["status"] = "PLEASE ENTER YOUR FIRST NAME";
-        $json_response = json_encode($array_response);
-        echo($json_response);
-};   
+    
+    $array_response["status"] = "PLEASE ENTER YOUR BIRTHDAY";
+    $json_response = json_encode($array_response);
+    die($json_response);
+};      
 
-// last-name condition script
-if(isset($_POST["last_name"])){ 
-    $last_name = $_POST["last_name"];
-}else{
-    $array_response["status"] = "PLEASE ENTER YOUR LAST NAME";
-        $json_response = json_encode($array_response);
-        echo($json_response);
-};   
-
-$query = $mysqli->prepare("INSERT INTO `users` ( `username`, `email`, `password`, `first_name`, `last_name`) VALUES (? , ? , ? , ? , ?) "); 
-$query->bind_param("sssss", $username, $email, $password, $first_name, $last_name);
+$query = $mysqli->prepare("INSERT INTO `users` ( `username`, `email`, `password`, `birth_date`) VALUES (? , ? , ? , ?) "); 
+$query->bind_param("ssss", $username, $email, $password, $birth_date);
 $query->execute();
 
 $array_response = [];
