@@ -11,11 +11,15 @@
 </head>
 
 <body>
+    <!--Start of main container-->
     <div class="main_container dir_col"> 
+        <!--Start of hero side-->
         <div class="hero_side">
             <img src="images/twitter_background.png" alt="twitter background">
         </div>
+        <!--End of hero side-->
     
+        <!--Start of login side-->
         <div class="login_side">
             <img class="logo" src="images/twitter_logo_white.png" alt="twitter logo">
     
@@ -30,7 +34,7 @@
                     <hr/><span>or</span><hr/>
                 </div>
 
-                <button id="signup" class="bluebtn">Sign up with phone or email</button>
+                <button id="signupbtn_modal" class="bluebtn">Sign up with email</button>
         
                 <p class="terms">By signing up, you agree to the 
                     <a class="bluetext" href="#">Terms of Service</a> and 
@@ -39,12 +43,15 @@
         
                 <div class="signin_section">
                     <h4 class="subtitle">Already have an account?</h4>
-                    <button id="signin" class="blackbtn">Sign in</button>
+                    <button id="signinbtn_modal" class="blackbtn">Sign in</button>
                 </div>
             </div> 
         </div>
+        <!--End of login side-->
     </div>
+    <!--End of main container-->
 
+    <!--Start of footer-->
     <footer>
         <ul>
             <li><a href="#">About</a></li>
@@ -67,6 +74,7 @@
             <li><a href="#">© 2022 Twitter, Inc.</a></li>
         </ul>
     </footer>
+    <!--End of footer-->
 
     <!--Start of registeration modal-->
     <div id="signup_modal" class="modal">
@@ -76,13 +84,18 @@
 
             <h1>Create your account</h1>
             <div class="textfield">
-                <input type ="text" required>
+                <input id="new_name" type ="text" required>
                 <label>Name</label>
             </div>
 
             <div class="textfield">
-                <input type ="email" required>
+                <input id="new_email" type ="email" required>
                 <label>Email</label>
+            </div>
+
+            <div class="textfield">
+                <input id="new_password" type ="password" required>
+                <label>Password</label>
             </div>
 
             <div class="date">
@@ -98,7 +111,7 @@
                 </div>
             </div>  
         </div>    
-        <button class="registerbtn">Register</button>              
+        <button id="register" class="registerbtn">Register</button>              
         </div>
     </div>
     <!--End of registeration modal-->
@@ -115,16 +128,16 @@
             <h1>Sign in to Twitter</h1>
 
             <div class="textfield">
-                <input type ="email" required>
+                <input id="email" type ="email" required>
                 <label>Email</label>
             </div>       
             
             <div class="textfield">
-                <input type ="password" required>
+                <input id="password" type ="password" required>
                 <label>Password</label>
             </div>
 
-            <button class="loginbtn">Log in</button>
+            <button id="login" class="loginbtn">Log in</button>
             <div class="create_account">
                 <p>Don't have an account? </p>
                 <button id="create_account" class="textbtn">Sign up</button>

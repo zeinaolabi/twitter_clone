@@ -252,7 +252,7 @@ a:hover{
 
 .date{
     color: white;
-    margin-top: 6vh;
+    margin-top: 4vh;
 }
 
 .date p{
@@ -295,7 +295,7 @@ select{
 
 .registerbtn{
     background-color: #767979;
-    margin-top: 10vh;
+    margin-top: 6vh;
     font-size: 18px;
     width: 100%;
     height: 5vh;
@@ -418,7 +418,8 @@ select{
     padding: 0.5rem 1rem;
     margin-bottom: 1vh;
     margin-right: 1vw;
-    width: auto;
+    max-width: 90%;
+    padding: 1vh 2vw;
 }
 
 .profilebtn p{
@@ -618,8 +619,6 @@ select{
 .button_title{
     display: flex;
     flex-direction: row;
-    height: 50px;
-    width: 50px;
 }
 
 /*Logout Pop out design*/
@@ -764,7 +763,7 @@ select{
     left: 10px;
     max-width: 130px;
     max-height: 130px;
-    width: 40%;
+    width: 45%;
     height: 45%;
     border-radius: 50%;
     border: 5px solid black;
