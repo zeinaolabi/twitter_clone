@@ -9,9 +9,8 @@ const signupModalButton = document.getElementById("signupbtn_modal");
 const createButton = document.getElementById("create_account");
 const closeSignin = document.getElementById("close_signin");
 const closeSignup = document.getElementById("close_signup");
-const userName = document.getElementById("name");
 const userEmail = document.getElementById("email");
-const userPass= document.getElementById("password");
+const userPass = document.getElementById("password");
 const loginButton = document.getElementById("login");
 const newUserName = document.getElementById("new_name");
 const newUserEmail = document.getElementById("new_email");
@@ -24,6 +23,11 @@ const month = document.getElementById('month');
 const day = document.getElementById('day');
 let errorMessage = "";
 
+//If the user is logged in, redirect to feed page
+if(localStorage.setItem(userEmail.value)){
+    window.location.replace("feed_page.html");
+}
+
 //When the login button is clicked, validate input 
 loginButton.addEventListener("click", (event)=>{
     //If one of the functions return false, stop
@@ -35,12 +39,16 @@ loginButton.addEventListener("click", (event)=>{
     //Send the data to the database using POST method
     fetch(signupAPI, {
         method: 'POST',
-        body: new URLSearchParams({ "email": newUserEmail.value,
-        "password": newUserPass.value,
+        body: new URLSearchParams({ "email": userEmail.value,
+        "password": userPass.value,
         "birth_date": date}),
     })
     .then(response=>response.json())
-    .then(data => error.textContent = data.success)
+    .then(data => userID = data.id)
+
+    localStorage.setItem(userEmail.value, userID);
+
+    window.location.replace("feed_page.html");
 })
 
 //When the registration button is clicked, validate input 
@@ -64,10 +72,14 @@ registerButton.addEventListener("click", (event)=>{
         body: new URLSearchParams({ "username": newUserName.value,
         "email": newUserEmail.value,
         "password": newUserPass.value,
-        "date": newUserPass.value}),
+        "birth_date": date}),
     })
     .then(response=>response.json())
-    .then(data => error.textContent = data.success)
+    .then(data => userID = data.id)
+
+    localStorage.setItem(userEmail.value, userID);
+
+    window.location.replace("feed_page.html");
 })
 
 //When the user clicks on the sign in button, open the modal
