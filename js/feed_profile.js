@@ -61,7 +61,7 @@ popupButton.onclick = function(event){
 
 //When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-    if (event.target == tweetModal){
+    if(event.target == tweetModal){
         tweetModal.style.display = "none";
     }
 }

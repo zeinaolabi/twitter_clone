@@ -831,6 +831,62 @@ select{
     font-weight: bold;
     color: white;
 }
+
+.edit_content{
+    box-shadow: 6px 6px 6px #202020;
+    background-color: black;
+    margin: 10% auto;
+    border: none;
+    width: 30rem;
+    height: 32rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.editprofile_header{
+    padding: 1vh 1vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+    width: 95%;
+}
+
+.editprofile_header .whitebtn{
+    width: 4rem;
+    margin: 0;
+}
+
+.edit_title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 8vw;
+    justify-content: space-between;
+}
+
+.edit_content input{
+    width: 26vw;
+    height: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.edit_content #bio{
+    height: 8vh;
+}
+
+input[type=image]{
+    height: 60%;
+    width: 100%;
+}
+
+.hover_effect:hover{
+    filter: brightness(50%);
+}
 /*End of Profile page*/
 
 @media screen and (max-width: 1250px) {
@@ -946,6 +1002,22 @@ select{
         margin-right: auto;
         width: 100%;
         height: 100%;
+    }
+
+    .edit_content{
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 100%;
+    }
+
+    .edit_content input{
+        width: 50vw;
+        height: 5vh;
+    }
+
+    .edit_title{
+        width: 20vw;
     }
 
     .signin_content{

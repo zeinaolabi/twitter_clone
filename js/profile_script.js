@@ -4,6 +4,10 @@ const getTweetsAPI = "http://localhost/twitter_test/get_tweets.php?id=" + localS
 const backButton = document.getElementById("back_button")
 const tweetInput = document.getElementById("tweet_input");
 const addTweetButton = document.getElementById("add_tweet");
+const editProfileModal = document.getElementById("editprofile_modal");
+const saveButton = document.getElementById("save_edit");
+const closeEdit = document.getElementById("close_edit");
+const modalButton = document.getElementById("editmodal_btn");
 
 //Remove info from local storage and redirect to login page
 backButton.onclick = function() {
@@ -14,6 +18,22 @@ addTweetButton.onclick = function(){
     postTweet(tweetInput.value);
     tweetModal.style.display = "none";
     tweetInput.value = "";
+}
+
+modalButton.onclick = function() {
+    editProfileModal.style.display = "block";
+}
+  
+// When the user clicks on x, close the modal
+closeEdit.onclick = function() {
+    editProfileModal.style.display = "none";
+}
+  
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+    if (event.target == editProfileModal){
+        editProfileModal.style.display = "none";
+    }
 }
 
 const postTweet = (tweet) => {
@@ -111,3 +131,7 @@ const viewTweets = () =>{
         }
     })
 }
+
+$("input[type='image']").click(function() {
+    $("input[id='my_file']").click();
+});

@@ -57,7 +57,7 @@
 
                     <div class="profile_content">
                         <img class="profile_image"src="images/batman_profile.jpeg" alt="profile picture">
-                        <button class="edit_profile blackbtn">Edit Profile</button>
+                        <button id="editmodal_btn" class="edit_profile blackbtn">Edit Profile</button>
                     </div>
                 </div>
 
@@ -117,6 +117,47 @@
                 <button id="add_tweet" class="addtweet_btn">Tweet</button>
             </div>
         </div>    
+    </div>
+
+    <!--Start of Edit profile modal-->
+    <div id="editprofile_modal" class="modal">
+        <!-- Modal content -->
+        <div class="edit_content">
+            <div class="editprofile_content">
+                <div class="editprofile_header">
+                    <div class="edit_title">
+                        <span id="close_edit" class="close">&times;</span>
+                        <h3>Edit Profile</h3>
+                    </div>
+            
+                    <button id="save_edit" class="whitebtn">Save</button>
+                </div>
+
+                <div class="profile">
+                    <label for="image">
+                        <input type="file" name="image" id="image" style="display:none;"/>
+                        <img class="cover hover_effect" src="images/batman.webp" alt="cover image" />
+                     </label>
+
+                    <div class="profile_content">
+                        <label for="image">
+                            <input type="file" name="image" id="image" style="display:none;"/>
+                            <img class="profile_image hover_effect"src="images/batman_profile.jpeg" alt="profile picture">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="textfield">
+                    <input id="new_name" type ="text" required>
+                    <label>Name</label>
+                </div>
+
+                <div class="textfield">
+                    <input id="bio" type ="text" required>
+                    <label>Bio</label>
+                </div>  
+            </div> 
+        </div>   
     </div>
 
     <script src="js/profile_script.js"></script>
