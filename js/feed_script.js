@@ -25,6 +25,10 @@ const postTweet = (tweet) => {
         return
     }
 
+    if(tweet.length > 280){
+        return
+    }
+
     // Send the data to the database using POST method
     // fetch(postTweetAPI, {
     //     method: 'POST',
