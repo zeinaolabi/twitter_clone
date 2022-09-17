@@ -314,11 +314,6 @@ select{
     margin: 0 5px;
 }
 
-.loginbtn{
-    max-width: 20vw;
-    height: 40px;
-}
-
 .signin_content{
     width: 70%;
     margin-left: auto;
@@ -326,9 +321,10 @@ select{
     color: white;
 }
 
-.signin_content img{
-    margin-left: auto;
-    margin-right: auto;
+.loginbtn{
+    max-width: 20vw;
+    height: 40px;
+    margin-left: 1vw;
 }
 
 .create_account{
@@ -337,6 +333,7 @@ select{
     font-size: 14px;
     margin-top: 5vh;
     color: #767979;
+    margin-left: 1vw;
 }
 
 .error{
@@ -574,7 +571,6 @@ select{
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     color: white;
     position: sticky;
 }
@@ -602,6 +598,30 @@ select{
     border:1px solid #1A8CD8;
     color: white;
     background-color: black;
+}
+
+.search_result{
+    max-width: 18rem;
+    height: fit-content;
+    background-color: #212327;
+    border: 1px solid #212327;
+    border-radius: 50px;
+    padding: 1.4vh 2vw;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    margin: 2vh 1.5vw;
+    display: none;
+    list-style-type: none;
+}
+
+.search_result li{
+    height: 3vh;
+    padding: 2vh 2vw;
+}
+
+.search_result li:hover{
+    background-color: #2e3137;
+    color: white;
 }
   
 .tweet_modal_content{
@@ -726,6 +746,7 @@ select{
     text-align: center;
     margin: 0;
     margin-right: 2vw;
+    margin-left: 5px;
 }
 
 .back:hover{

@@ -14,9 +14,9 @@
     <div class="main_container">
         <div class="left_side">
             <div class="buttons">
-                <button class="mainpage_btn"><img src="images/twitter_logo_white.png" width="40px" height="40px"></button>
-                <button class="pages"><img class="icon" src="images/home.png"><span class="button_title">Home</span></button>
-                <button class="pages"><img class="icon" src="images/profile.png"><span class="button_title">Profile</span></button>
+                <button id="twitter_button" class="mainpage_btn"><img src="images/twitter_logo_white.png" width="40px" height="40px"></button>
+                <button id="home_button" class="pages"><img class="icon" src="images/home.png"><span class="button_title">Home</span></button>
+                <button id="profile_button" class="pages"><img class="icon" src="images/profile.png"><span class="button_title">Profile</span></button>
                 <button id="showtweet_btn" class="bluebtn tweetbtn">Tweet</button>
             </div>
 
@@ -37,8 +37,7 @@
                             <span class="username">@BruceWayne</span></p>
                     </div>
 
-                    <button class="logout">Log out <span class="username">@BruceWayne</span></button>
-
+                    <button id="logout_button" class="logout">Log out <span class="username">@BruceWayne</span></button>
                 </div>
             </div>
         </div>
@@ -151,11 +150,10 @@
 
 
         <div class="right_side">
-            <input class="search" type="text" name="search" placeholder="&#xF002;    Search Twitter">
+            <input id="search_input" class="search" type="text" name="search" placeholder="&#xF002;    Search Twitter">
 
-            <div class="search_result">
-                
-            </div>
+            <ul id="search_result" class="search_result">      
+            </ul>
         </div>
     </div>
     
@@ -179,5 +177,6 @@
     </div>
 
     <script src="js/feed_script.js"></script>
+    <script src="js/feed_profile.js"></script>
 </body>
 </html>
