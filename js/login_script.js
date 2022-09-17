@@ -43,9 +43,18 @@ loginButton.addEventListener("click", (event)=>{
         "password": userPass.value}),
     })
     .then(response=>response.json())
-    .then(data => localStorage.setItem("userID", data.id))
+    .then(
+        data =>  {
+        if (data.error !== null) {
+            errorMessage = data.message
+            signinError.textContent = errorMessage
+            return
+         }
 
-    window.location.replace("feed_page.html");
+         localStorage.setItem("userID", data.id)
+         window.location.replace("feed_page.html");
+    })
+    
 })
 
 //When the registration button is clicked, validate input 
@@ -72,11 +81,21 @@ registerButton.addEventListener("click", (event)=>{
         "birth_date": date}),
     })
     .then(response=>response.json())
-    //Save ID in local storage
-    .then(data => localStorage.setItem("userID", data.id))
-    
-    //Redirect to feed page
-    window.location.replace("feed_page.html");
+    .then(
+        data =>  {
+        //Show error
+        if (data.error !== null) {
+            errorMessage = data.message
+            signupError.textContent = errorMessage
+            return
+         }
+
+        //Save ID in local storage
+        localStorage.setItem("userID", data.id)
+            //Redirect to feed page
+
+        window.location.replace("feed_page.html");
+    })
 })
 
 //When the user clicks on the sign in button, open the modal
