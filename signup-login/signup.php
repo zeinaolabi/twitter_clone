@@ -6,14 +6,23 @@ header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorizatio
 include("connection.php");
 
 // username condition script
-if(isset($_POST["username"]) && !empty($_POST["username"])){ 
+if(isset($_POST["username"]) && !empty($_POST["username"])){
     $username = $_POST["username"];
+    $query = $mysqli->prepare("SELECT id FROM users WHERE username = ?");
+    $query->bind_param("s", $username);
+    $query->execute();
+    $query->store_result();
+    $num_rows = $query->num_rows;
+    if($num_rows != 0){
+        $array_response["message"] = "Username already exists!";
+        $json_response = json_encode($array_response);
+        die($json_response);
+    }
 }else{
-    
     $array_response["status"] = "PLEASE ENTER A USERNAME";
     $json_response = json_encode($array_response);
     die($json_response);
-};    
+};
 
 // email condition script
 if(isset($_POST["email"])){
