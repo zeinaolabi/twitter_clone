@@ -667,7 +667,7 @@ select{
     z-index: 1;
     bottom: 100%;
     right: 0;
-    margin-right: 10px;
+    margin-right: 0.5vw;
     box-shadow: 1px 1px 4px #595D61;
     display: flex;
     flex-direction: column;
@@ -914,6 +914,24 @@ select{
     .mid_side{
         margin-right: 2vw;
         min-width: 0;
+    }
+
+    .logout{
+        font-size: 12px;
+    }
+
+    .logout .username{
+        display: none;
+    }
+
+    .account_info .profile_pic{
+        width: 25px;
+        height: 25px;
+    }
+
+    .tweet_user{
+        font-size: 12px;
+        font-weight: bold;
     }
 }
 

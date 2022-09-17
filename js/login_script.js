@@ -45,16 +45,15 @@ loginButton.addEventListener("click", (event)=>{
     .then(response=>response.json())
     .then(
         data =>  {
-        if (data.error !== null) {
+        if(data.message !== undefined) {
             errorMessage = data.message
             signinError.textContent = errorMessage
             return
-         }
+        }
 
-         localStorage.setItem("userID", data.id)
-         window.location.replace("feed_page.html");
+        localStorage.setItem("userID", data.id)
+        window.location.replace("feed_page.html");
     })
-    
 })
 
 //When the registration button is clicked, validate input 
@@ -84,16 +83,18 @@ registerButton.addEventListener("click", (event)=>{
     .then(
         data =>  {
         //Show error
-        if (data.error !== null) {
+        console.log(data)
+        console.log(data.message)
+        console.log(data.id)
+        if (data.message !== undefined) {
             errorMessage = data.message
             signupError.textContent = errorMessage
             return
-         }
+        }
 
         //Save ID in local storage
         localStorage.setItem("userID", data.id)
-            //Redirect to feed page
-
+        //Redirect to feed page
         window.location.replace("feed_page.html");
     })
 })
