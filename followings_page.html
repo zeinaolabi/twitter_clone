@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="images/twitter_logo.png" type="image/icon type" width="50%">
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <title>Followers, Followings, Blocked users</title>
+</head>
+<body>
+    <div class="main_container">
+        <div class="left_side">
+            <div class="buttons">
+                <button id="twitter_button" class="mainpage_btn"><img src="images/twitter_logo_white.png" width="40px" height="40px"></button>
+                <button id="home_button" class="pages"><img class="icon" src="images/home.png"><span class="button_title">Home</span></button>
+                <button id="profile_button" class="pages"><img class="icon" src="images/profile.png"><span class="button_title">Profile</span></button>
+                <button id="showtweet_btn" class="bluebtn tweetbtn">Tweet</button>
+            </div>
+
+            <div class="popup">
+                <button id="popup_btn" class="pages profilebtn">
+                    <img src="images/batman_profile.jpeg" alt="profile image">
+                    <div class="button_title">
+                        <p>Batman<br/>
+                        <span class="username">@BruceWayne</span></p>
+     
+                        <span>...</span>
+                    </div>
+                </button>
+                <div class="popuptext" id="myPopup">
+                    <div class="account_info">
+                        <img class="profile_pic" src="images/batman_profile.jpeg" alt="profile image">
+                        <p class="tweet_user">Batman<br/>
+                            <span class="username">@BruceWayne</span></p>
+                    </div>
+
+                    <button id="logout_button" class="logout">Log out <span class="username">@BruceWayne</span></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mid_side">
+            <div class="profile_header">
+                <div class="follower_buttons">
+                    <button id="home_button" class="pages">Followers</button>
+                    <button id="profile_button" class="pages">Followings</button>
+                    <button id="showtweet_btn" class="pages">Blocked</button>
+                </div>
+            </div>
+
+            <div id="info_section">
+                <div class="user"></div>
+                <ul id="user_result" class="user_result">     
+                    <li>sdfnsjkdfn</li> 
+                </ul>
+                
+            </div>
+        </div>
+
+
+        <div class="right_side">
+            <input id="search_input" class="search" type="text" name="search" placeholder="&#xF002;    Search Twitter">
+
+            <ul id="search_result" class="search_result">
+            </ul>
+        </div>
+    </div>
+    
+    <div id="tweet_modal" class="modal">
+        <!-- Modal content -->
+        <div class="tweet_modal_content">
+            <span id="close_tweet" class="close">&times;</span>
+
+            <div class="tweet_area">
+                <img class="profile_pic" src="images/batman_profile.jpeg" alt="profile image">
+                <input id="tweet_input" class="tweet_input" type="text" placeholder="What's happening?">
+            </div>
+
+            <div class="add_tweet">
+                <input type="file" id="actual-btn" hidden/>
+                <label for="actual-btn"><img src="images/image.png" width="20px" height="20px"></label>
+
+                <button id="add_tweet" class="addtweet_btn">Tweet</button>
+            </div>
+        </div>    
+    </div>
+
+    <script src="js/followers_script.js"></script>
+    <script src="js/feed_profile.js"></script>
+</body>
+</html>

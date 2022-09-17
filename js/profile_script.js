@@ -28,13 +28,6 @@ modalButton.onclick = function() {
 closeEdit.onclick = function() {
     editProfileModal.style.display = "none";
 }
-  
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-    if (event.target == editProfileModal){
-        editProfileModal.style.display = "none";
-    }
-}
 
 const postTweet = (tweet) => {
     //If tweet is empty, do nothing
@@ -131,7 +124,3 @@ const viewTweets = () =>{
         }
     })
 }
-
-$("input[type='image']").click(function() {
-    $("input[id='my_file']").click();
-});
