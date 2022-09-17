@@ -5,7 +5,8 @@ const postTweetAPI ="http://localhost/twitter_test/post_tweet.php";
 const tweetInput2 = document.getElementById("tweet_input2");
 const addTweetButton2 = document.getElementById("add_tweet2");
 const addedImage = document.getElementById("added_image");
-const userID = localStorage.getItem("userID");
+const likeButtons = document.querySelectorAll(".like_btn");
+const likeImage = document.getElementById("like_image");
 
 addTweetButton.onclick = function(){
     postTweet(tweetInput.value);
@@ -80,6 +81,8 @@ const postTweet = (tweet) => {
         }
     }
     originalTweet.after(clone);
+
+    likeButtons.forEach(likeButton => addEventListener('click', liked))
 }
 
 const viewTweets = () =>{
@@ -115,9 +118,16 @@ const viewTweets = () =>{
             //Get likes
             let likes = clone.querySelector(".likes_number");
             likes.textContent = data.likes;
+            likes.id = data.tweet_id;
            
             //Add div after the original tweet
             originalTweet.after(clone);
         }
     })
 }
+
+const liked = () =>{
+    likeImage.src = "images/redheart.png";
+}
+
+

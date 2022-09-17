@@ -11,6 +11,7 @@ const profileButton = document.getElementById("profile_button");
 const logoutButton = document.getElementById("logout_button");
 const searchInput = document.getElementById("search_input");
 const searchResult = document.getElementById("search_result");
+const userID = localStorage.getItem("userID");
 
 //When user adds an input, search for results
 searchInput.onkeyup = function() {
