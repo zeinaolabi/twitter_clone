@@ -52,8 +52,10 @@
                 </div>
 
                 <div class="add_tweet">
-                    <input id="added_image" accept="image/*" type="file" id="actual-btn" multiple/>
-                    <label for="actual-btn"><img src="images/image.png" width="20px" height="20px"></label>
+                    <label>
+                        <input id="added_image" accept="image/*" type="file" id="actual-btn" multiple hidden/>
+                        <img src="images/image.png" width="20px" height="20px">
+                    </label>
 
                     <button id="add_tweet" class="addtweet_btn">Tweet</button>
                 </div>
@@ -68,6 +70,7 @@
                     <img class="profile_pic" src="images/batman_profile.jpeg" alt="profile image">
     
                     <div class="tweet_content">
+                        <button class="delete_tweet"><img src="images/trash.png" alt="delete image" width="20px" height="20px"></button>
                         <p class="tweet_user">Batman <span class="username">@BruceWayne</span></p>
                         <p class="tweet_text"></p>
                         <img class="tweet_image" src="" alt="tweet image">

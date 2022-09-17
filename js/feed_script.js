@@ -82,7 +82,7 @@ const postTweet = (tweet) => {
     }
     originalTweet.after(clone);
 
-    likeButtons.forEach(likeButton => addEventListener('click', liked))
+    // likeButtons.forEach(likeButton => addEventListener('click', liked))
 }
 
 const viewTweets = () =>{
@@ -126,8 +126,8 @@ const viewTweets = () =>{
     })
 }
 
-const liked = () =>{
-    likeImage.src = "images/redheart.png";
-}
+// const liked = () =>{
+//     likeImage.src = "images/redheart.png";
+// }
 
 
