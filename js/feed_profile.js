@@ -13,12 +13,19 @@ const logoutButton = document.getElementById("logout_button");
 const searchInput = document.getElementById("search_input");
 const searchResult = document.getElementById("search_result");
 const tweetInput = document.getElementById("tweet_input");
+const tweetInput2 = document.getElementById("tweet_input2");
 const addTweetButton = document.getElementById("add_tweet");
+const addTweetButton2 = document.getElementById("add_tweet2");
 const addedImage = document.getElementById("added_image");
 const userID = localStorage.getItem("userID");
 
 addTweetButton.onclick = function(){
-    postTweet();
+    postTweet(tweetInput.value);
+}
+
+addTweetButton2.onclick = function(){
+    postTweet(tweetInput2.value);
+    tweetModal.style.display = "none";
 }
 
 const refresh = () => {
@@ -89,9 +96,9 @@ const search = () => {
     .then(data => localStorage.setItem("userID", data.id))
 }
 
-const postTweet = () => {
+const postTweet = (tweet) => {
     // Send the data to the database using POST method
-    // fetch(signupAPI, {
+    // fetch(postTweetAPI, {
     //     method: 'POST',
     //     body: new URLSearchParams({ "user_id": userID,
     //     "tweet": tweetInput.value}),
@@ -131,13 +138,12 @@ const postTweet = () => {
     let clone = originalTweet.cloneNode(true);
     clone.style.display ="flex";
 
-    clone.id="hi";
+    clone.id="test";
     clone.classList.add("tweet");
     let paragraph = clone.querySelector(".tweet_text");
-    paragraph.textContent = "hello"
+    paragraph.textContent = tweet;
     let image = clone.querySelector(".tweet_image");
-    console.log(addedImage)
-    console.log(addedImage.value)
+
     if(addedImage.value == ""){
         image.style.display = "none";
     }
