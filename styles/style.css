@@ -236,12 +236,18 @@ a:hover{
     pointer-events: none;
 }
 
-.textfield input:focus ~ label{
+.textfield input:focus ~ label,
+.textfield input:valid ~ label{
     padding-top:5px;
     top: -0.5px;
     color: #165F93;
     transition: 0.2s;
     font-size: 14px;
+}
+
+.textfield input:focus ~ span::before,
+.textfield input:valid ~ span::before{
+    width: 100%;
 }
 
 .date{

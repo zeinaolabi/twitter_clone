@@ -24,7 +24,7 @@ const day = document.getElementById('day');
 let errorMessage = "";
 
 //If the user is logged in, redirect to feed page
-if(localStorage.setItem(userEmail.value)){
+if(localStorage.getItem("userID")){
     window.location.replace("feed_page.html");
 }
 
@@ -37,16 +37,13 @@ loginButton.addEventListener("click", (event)=>{
     }
 
     //Send the data to the database using POST method
-    fetch(signupAPI, {
+    fetch(signinAPI, {
         method: 'POST',
         body: new URLSearchParams({ "email": userEmail.value,
-        "password": userPass.value,
-        "birth_date": date}),
+        "password": userPass.value}),
     })
     .then(response=>response.json())
-    .then(data => userID = data.id)
-
-    localStorage.setItem(userEmail.value, userID);
+    .then(data => localStorage.setItem("userID", data.id))
 
     window.location.replace("feed_page.html");
 })
@@ -75,10 +72,10 @@ registerButton.addEventListener("click", (event)=>{
         "birth_date": date}),
     })
     .then(response=>response.json())
-    .then(data => userID = data.id)
-
-    localStorage.setItem(userEmail.value, userID);
-
+    //Save ID in local storage
+    .then(data => localStorage.setItem("userID", data.id))
+    
+    //Redirect to feed page
     window.location.replace("feed_page.html");
 })
 
@@ -140,8 +137,8 @@ function validateEmail(email){
         return false
     }
     else if(!/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email) || 
-    email.substring(0,email.value.indexOf("@")).length < 3 ||
-    email.substring(email.value.indexOf("@") + 1,email.length).length < 5){
+    email.substring(0,email.indexOf("@")).length < 3 ||
+    email.substring(email.indexOf("@") + 1,email.length).length < 5){
         errorMessage = "Error: Invalid email";
         return false
     }
