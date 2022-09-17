@@ -1,25 +1,28 @@
-const getTweetsAPI = "http://localhost/twitter_test/get_tweets.php"
+const getTweetsAPI = "http://localhost/twitter_test/get_tweets.php";
+const postTweetAPI ="http://localhost/twitter_test/post_tweet.php";;
 const addTweetButton = document.getElementById("add_tweet");
-const tweetInput = document.getElementById("tweet_input");
-const postTweetAPI ="http://localhost/twitter_test/post_tweet.php";
-const tweetInput2 = document.getElementById("tweet_input2");
 const addTweetButton2 = document.getElementById("add_tweet2");
+const tweetInput = document.getElementById("tweet_input");
+const tweetInput2 = document.getElementById("tweet_input2");
 const addedImage = document.getElementById("added_image");
+const addedImage2 = document.getElementById("added_image2");
 const likeButtons = document.querySelectorAll(".like_btn");
 const likeImage = document.getElementById("like_image");
 
 addTweetButton.onclick = function(){
-    postTweet(tweetInput.value);
+    postTweet(tweetInput.value, addedImage);
     tweetInput.value = "";
+    addedImage.value = "";
 }
 
 addTweetButton2.onclick = function(){
-    postTweet(tweetInput2.value);
+    postTweet(tweetInput2.value, addedImage2);
     tweetModal.style.display = "none";
     tweetInput2.value = "";
+    addedImage2.value = "";
 }
 
-const postTweet = (tweet) => {
+const postTweet = (tweet, addedImage) => {
     //If tweet is empty, do nothing
     if(tweet == "" && addedImage.value == ""){
         return

@@ -112,8 +112,10 @@
             </div>
 
             <div class="add_tweet">
-                <input type="file" id="actual-btn" hidden/>
-                <label for="actual-btn"><img src="images/image.png" width="20px" height="20px"></label>
+                <label>
+                    <input id="added_image" accept="image/*" type="file" multiple hidden/>
+                    <img src="images/image.png" width="20px" height="20px">
+                </label>
 
                 <button id="add_tweet" class="addtweet_btn">Tweet</button>
             </div>
@@ -136,13 +138,13 @@
 
                 <div class="profile">
                     <label for="image">
-                        <input type="file" name="image" id="image" style="display:none;"/>
+                        <input type="file" name="image" id="profile_image" style="display:none;"/>
                         <img class="cover hover_effect" src="images/batman.webp" alt="cover image" />
                      </label>
 
                     <div class="profile_content">
                         <label for="image">
-                            <input type="file" name="image" id="image" style="display:none;"/>
+                            <input type="file" name="image" id="cover_image" style="display:none;"/>
                             <img class="profile_image hover_effect"src="images/batman_profile.jpeg" alt="profile picture">
                         </label>
                     </div>

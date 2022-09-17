@@ -4,6 +4,7 @@ const getTweetsAPI = "http://localhost/twitter_test/get_tweets.php?id=" + localS
 const backButton = document.getElementById("back_button")
 const tweetInput = document.getElementById("tweet_input");
 const addTweetButton = document.getElementById("add_tweet");
+const addedImage = document.getElementById("added_image");
 const editProfileModal = document.getElementById("editprofile_modal");
 const saveButton = document.getElementById("save_edit");
 const closeEdit = document.getElementById("close_edit");
@@ -21,9 +22,10 @@ followersButton.onclick = function() {
 }
 
 addTweetButton.onclick = function(){
-    postTweet(tweetInput.value);
+    postTweet(tweetInput.value, addedImage);
     tweetModal.style.display = "none";
     tweetInput.value = "";
+    addedImage.value = "";
 }
 
 modalButton.onclick = function() {
@@ -35,8 +37,9 @@ closeEdit.onclick = function() {
     editProfileModal.style.display = "none";
 }
 
-const postTweet = (tweet) => {
+const postTweet = (tweet, addedImage) => {
     //If tweet is empty, do nothing
+    console.log(addedImage.value)
     if(tweet == "" && addedImage.value == ""){
         return
     }
@@ -91,7 +94,16 @@ const postTweet = (tweet) => {
     let paragraph = clone.querySelector(".tweet_text");
     paragraph.textContent = tweet;
     let image = clone.querySelector(".tweet_image");
-    image.style.display = "none";
+
+    if(addedImage.value == ""){
+        image.style.display = "none";
+    }
+    else{
+        const[file] = addedImage.files
+        if (file) {
+            image.src = URL.createObjectURL(file)
+        }
+    }
     originalTweet.after(clone);
 }
 
