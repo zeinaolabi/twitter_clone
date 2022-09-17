@@ -75,3 +75,7 @@ const search = () => {
     .then(response=>response.json())
     .then(data => localStorage.setItem("userID", data.id))
 }
+
+const refresh = () => {
+    window.location.replace("feed_page.html");
+}

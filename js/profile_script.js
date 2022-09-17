@@ -16,6 +16,11 @@ addTweetButton.onclick = function(){
 }
 
 const postTweet = (tweet) => {
+    //If tweet is empty, do nothing
+    if(tweet == "" && addedImage.value == ""){
+        return
+    }
+    
     // Send the data to the database using POST method
     // fetch(postTweetAPI, {
     //     method: 'POST',

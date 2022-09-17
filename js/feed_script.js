@@ -18,11 +18,12 @@ addTweetButton2.onclick = function(){
     tweetInput2.value = "";
 }
 
-const refresh = () => {
-    window.location.replace("feed_page.html");
-}
-
 const postTweet = (tweet) => {
+    //If tweet is empty, do nothing
+    if(tweet == "" && addedImage.value == ""){
+        return
+    }
+
     // Send the data to the database using POST method
     // fetch(postTweetAPI, {
     //     method: 'POST',
@@ -58,7 +59,6 @@ const postTweet = (tweet) => {
     //     }
     //     originalTweet.after(clone);
     // })
-
 
     let originalTweet = document.getElementById("tweet");
     let clone = originalTweet.cloneNode(true);
