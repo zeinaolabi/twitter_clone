@@ -8,10 +8,16 @@ const editProfileModal = document.getElementById("editprofile_modal");
 const saveButton = document.getElementById("save_edit");
 const closeEdit = document.getElementById("close_edit");
 const modalButton = document.getElementById("editmodal_btn");
+const followersButton = document.getElementById("followers");
 
 //Remove info from local storage and redirect to login page
 backButton.onclick = function() {
     window.location.replace("feed_page.html");
+}
+
+//Redirect to followers/followings page
+followersButton.onclick = function() {
+    window.location.replace("followings_page.html");
 }
 
 addTweetButton.onclick = function(){

@@ -825,11 +825,21 @@ select{
 .followers{
     font-size: 14px;
     color:#595D61;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    width: fit-content;
+}
+
+.followers:hover{
+    color:#1A8CD8;
 }
 
 .followers_count{
     font-weight: bold;
     color: white;
+    padding:0 5px;
 }
 
 .edit_content{
