@@ -1,5 +1,6 @@
 //Initialize variables
 const searchAPI = "http://localhost/twitter_test/search.php?id=";
+const postTweetAPI ="http://localhost/twitter_test/post_tweet.php";
 const tweetModal = document.getElementById("tweet_modal");
 const tweetButton = document.getElementById("showtweet_btn");
 const closeTweet = document.getElementById("close_tweet");
@@ -11,11 +12,18 @@ const profileButton = document.getElementById("profile_button");
 const logoutButton = document.getElementById("logout_button");
 const searchInput = document.getElementById("search_input");
 const searchResult = document.getElementById("search_result");
+const tweetInput = document.getElementById("tweet_input");
+const addTweetButton = document.getElementById("add_tweet");
+const addedImage = document.getElementById("added_image");
+const userID = localStorage.getItem("userID");
+
+addTweetButton.onclick = function(){
+    postTweet();
+}
+
 const refresh = () => {
     window.location.replace("feed_page.html");
 }
-//TO BE EDITED
-let userID = 0;
 
 //When user adds an input, search for results
 searchInput.onkeyup = function() {
@@ -70,6 +78,7 @@ window.onclick = function(event) {
     }
 }
 
+//TO BE EDITED
 const search = () => {
     var input, filter, ul, li, a, i, txtValue;
     input = document.getElementById('myInput');
@@ -78,6 +87,65 @@ const search = () => {
     fetch(searchAPI + userID)
     .then(response=>response.json())
     .then(data => localStorage.setItem("userID", data.id))
+}
 
+const postTweet = () => {
+    // Send the data to the database using POST method
+    // fetch(signupAPI, {
+    //     method: 'POST',
+    //     body: new URLSearchParams({ "user_id": userID,
+    //     "tweet": tweetInput.value}),
+    // })
+    // .then(response=>response.json())
+    // .then(
+    //     data =>  {
+    //     //Show error
+    //     if (data.message !== undefined) {
+    //         //Do nothing - TO BE EDITED
+    //         return
+    //     }
+
+    //     let originalTweet = document.getElementById("tweet");
+    //     let clone = originalTweet.cloneNode(true);
+    //     clone.style.display ="flex";
   
+    //     clone.id= data.tweet_id;
+    //     clone.classList.add("tweet");
+    //     let paragraph = clone.querySelector(".tweet_text");
+    //     paragraph.textContent = data.tweet;
+    //     let image = clone.querySelector(".tweet_image");
+    //     if(addedImage.value == ""){
+    //         image.style.display = "none";
+    //     }
+    //     else{
+    //         const [file] = addedImage.files
+                //    if (file) {
+                //     image.src = URL.createObjectURL(file)
+                // }
+    //     }
+    //     originalTweet.after(clone);
+    // })
+
+
+    let originalTweet = document.getElementById("tweet");
+    let clone = originalTweet.cloneNode(true);
+    clone.style.display ="flex";
+
+    clone.id="hi";
+    clone.classList.add("tweet");
+    let paragraph = clone.querySelector(".tweet_text");
+    paragraph.textContent = "hello"
+    let image = clone.querySelector(".tweet_image");
+    console.log(addedImage)
+    console.log(addedImage.value)
+    if(addedImage.value == ""){
+        image.style.display = "none";
+    }
+    else{
+        const [file] = addedImage.files
+        if (file) {
+            image.src = URL.createObjectURL(file)
+        }
+    }
+    originalTweet.after(clone);
 }

@@ -83,9 +83,6 @@ registerButton.addEventListener("click", (event)=>{
     .then(
         data =>  {
         //Show error
-        console.log(data)
-        console.log(data.message)
-        console.log(data.id)
         if (data.message !== undefined) {
             errorMessage = data.message
             signupError.textContent = errorMessage
