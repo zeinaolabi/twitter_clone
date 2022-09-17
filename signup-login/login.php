@@ -4,6 +4,8 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers *");
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS, PUT, DELETE');
 header('Access-Control-Allow-Headers: Origin, Content-Type, Accept, Authorization, X-Request-With');
+header('Content-Type: application/json');
+ 
 // DataBase connection
 include("connection.php");
 
@@ -27,22 +29,24 @@ if(isset($_POST["password"])  && !empty($_POST["password"] )){
     die($json_response);
 }
 // prepares an SQL statement for execution
-$query = $mysqli->prepare("SELECT id, email, password  FROM users WHERE email = ? AND password = ?");
+$query = $mysqli->prepare("SELECT id  FROM users WHERE email = ? AND password = ?");
 $query->bind_param("ss", $email, $password);
 $query->execute();
 
-$query->store_result();
-$num_rows = $query->num_rows;
-$query->bind_result($id, $email, $password);
-$query->fetch();
+$array = $query->get_result()->fetch_assoc();
 
-// return response
-if($num_rows == 0){
-    $array_response["status"] = "This account doesn't exist";
-}else{
-    $array_response["status"] = "Logged In !";
+if (empty($array)) {
+    http_response_code(400);
+    echo json_encode([
+        'error' => 400,
+        'message' => 'incorrect username or password'
+    ]);
+    
+    return;
 }
-echo json_encode($array_response);
+
+$json = json_encode($array);
+echo $json;
 
 $query->close();
 $mysqli->close();
