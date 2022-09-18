@@ -41,4 +41,25 @@ if (empty($array)) {
     return;
 }
 
+$like_id = $array["id"];
+
+$query = $mysqli->prepare("DELETE FROM `likes` WHERE `id` = ?"); 
+$query->bind_param("s", $like_id);
+
+if (!$query->execute()) {
+    http_response_code(400);
+    echo json_encode([
+        'error' => 400,
+        'message' => "Error: Can't unlike tweet"
+    ]);
+    
+    return;
+}
+
+$json = json_encode(['message' => "success!"]);
+echo $json;
+
+$query->close();
+$mysqli->close();
+
 ?>
