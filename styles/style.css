@@ -739,7 +739,8 @@ select{
     display: flex;
     flex-direction: row;
     height: 20px;
-    margin-top: 10px
+    margin-top: 10px;
+    align-items: center;
 }
 
 .back{
@@ -761,11 +762,6 @@ select{
 
 .back .icon{
     padding: 0;
-}
-
-.tweets_number{
-    font-size: 12px;
-    color: #767979;
 }
 
 .profile_header{

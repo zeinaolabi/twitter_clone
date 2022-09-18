@@ -4,6 +4,18 @@ const userResult = document.getElementById("user_result");
 const followersButton = document.getElementById("followers_button");
 const followingButton = document.getElementById("following_button");
 const blockedButton = document.getElementById("blocked_btn");
+const homeButton = document.getElementById("home_button");
+const profileButton = document.getElementById("profile_button");
+
+//When the user clicks on the home button, go to feed page
+homeButton.onclick = function() {
+    window.location.replace("feed_page.html");
+}
+
+//When the user clicks on the profile button, redirect to profile page
+profileButton.onclick = function() {
+    window.location.replace("profile_page.html");
+}
 
 const getFollowers = () => {
     fetch(getFollowersAPI)
