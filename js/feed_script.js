@@ -68,7 +68,7 @@ const postTweet = (tweet, addedImage) => {
             image.style.display = "none";
         }
         else{
-            if (file){
+            if(file){
                 image.src = URL.createObjectURL(file);
             }
         }
@@ -92,27 +92,32 @@ const viewTweets = () =>{
         }
 
         //Loop over the response
-        for(let i = 0; i < data.length; i++){
+        for(let i = 0; i < Object.keys(data).length; i++){
             //Make a clone of the tweet model
             let originalTweet = document.getElementById("tweet");
             let clone = originalTweet.cloneNode(true);
             clone.style.display ="flex";
-            clone.id= data.tweet_id;
+            clone.id= data[i].tweet_id;
             clone.classList.add("tweet");
 
             //Get the tweet text and modify on it
             let paragraph = clone.querySelector(".tweet_text");
-            paragraph.textContent = data.tweet;
+            paragraph.textContent = data[i].tweet;
 
-            //Get the image and decode it from base64
+            //Get the image if avaiable and show it
             let image = clone.querySelector(".tweet_image");
-            let decodeBase64 = decodeURIComponent(escape(window.atob(data.image)));
-            image.src = URL.createObjectURL(decodeBase64);
-
+            if(data[i].image == null){
+                image.style.display = "none";
+            }
+            else{
+                image.src = 'data:image/jpeg;base64,' + data[i].image;
+            }
+            
+            console.log(data[i].likes_count);
             //Get likes
             let likes = clone.querySelector(".likes_number");
-            likes.textContent = data.likes;
-            likes.id = data.tweet_id;
+            likes.textContent = data[i].likes_count;
+            likes.id = data[i].id;
            
             //Add div after the original tweet
             originalTweet.after(clone);
@@ -124,4 +129,6 @@ const viewTweets = () =>{
 //     likeImage.src = "images/redheart.png";
 // }
 
+
+viewTweets();
 
