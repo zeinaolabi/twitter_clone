@@ -2,10 +2,9 @@
 include("connection.php");
 require_once("headers.php");
 
-$userID = $_POST["user_id"];
-$followedUserID = $_POST["followeduser_id"];
+$userID = $_GET["user_id"];
+$followedUserID = $_GET["followeduser_id"];
 
-// username condition script
 if(!isset($userID) || empty($userID) || !isset($followedUserID) || empty($followedUserID)){ 
     http_response_code(400);
     echo json_encode([
@@ -16,7 +15,7 @@ if(!isset($userID) || empty($userID) || !isset($followedUserID) || empty($follow
     return;   
 }    
 
-$query = $mysqli->prepare("SELECT id FROM follow WHERE `user_id` = ? and `followeduser_id` = ?");
+$query = $mysqli->prepare("SELECT id FROM `follows` WHERE `user_id` = ? and `followeduser_id` = ?");
 $query->bind_param("ss", $userID, $followedUserID);
 $query->execute();
 
@@ -26,7 +25,23 @@ if (!empty($array)) {
     http_response_code(400);
     echo json_encode([
         'error' => 400,
-        'message' => 'Post already liked'
+        'message' => 'Already followed user'
+    ]);
+    
+    return;
+}
+
+$query = $mysqli->prepare("INSERT INTO `follows` (`user_id`, `followeduser_id`) VALUE (?, ?) "); 
+$query->bind_param("ss", $userID, $followedUserID);
+$query->execute();
+
+$tweet_id = mysqli_insert_id($mysqli); 
+
+if ($tweet_id === null) {
+    http_response_code(400);
+    echo json_encode([
+        'error' => 400,
+        'message' => "Error: Can't follow user"
     ]);
     
     return;
