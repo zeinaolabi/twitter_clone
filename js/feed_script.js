@@ -107,6 +107,22 @@ const viewTweets = () =>{
             let paragraph = clone.querySelector(".tweet_text");
             paragraph.textContent = data[i].tweet;
 
+            //Get username
+            let username = clone.querySelector(".username");
+            username.textContent = "@" + data[i].username;
+
+            //Get name
+            let name = clone.querySelector(".name");
+            if(data[i].name != null){
+                name.textContent = data[i].name;
+            }
+
+            //Get Profile picture
+            let profilePic = clone.querySelector(".profile_pic");
+            if(data[i].profile_picture != null){
+                profilePic.src = 'data:image/jpeg;base64,' + data[i].profile_picture;
+            }
+
             //Get the image if avaiable and show it
             let image = clone.querySelector(".tweet_image");
             if(data[i].image == null){
