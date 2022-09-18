@@ -1,9 +1,11 @@
+//Initialized APIs
 const getTweetsAPI = "http://localhost/twitter_test/get_tweets.php?user_id=" + localStorage.getItem("userID").toString();
 const likeTweetAPI = "http://localhost/twitter_test/like_tweet.php?user_id="+ localStorage.getItem("userID").toString() + "&tweet_id=";
 const unlikeTweetAPI = "http://localhost/twitter_test/unlike_tweet.php?user_id="+ localStorage.getItem("userID").toString() + "&tweet_id=";
 const likedTweetAPI = "http://localhost/twitter_test/post_liked.php?user_id="+ localStorage.getItem("userID").toString() + "&tweet_id=";
 const getInfoAPI = "http://localhost/twitter_test/get_info.php?user_id=" + localStorage.getItem("userID").toString();
 const postTweetAPI = "http://localhost/twitter_test/post_tweet.php";
+//Initialized variables
 const addTweetButton = document.getElementById("add_tweet");
 const addTweetButton2 = document.getElementById("add_tweet2");
 const tweetInput = document.getElementById("tweet_input");
@@ -13,6 +15,9 @@ const addedImage2 = document.getElementById("added_image2");
 const likeButtons = document.querySelectorAll(".like_btn");
 const likeImage = document.getElementById("like_image");
 const profilePictures = document.querySelectorAll("#profile_picture");
+const userNames = document.querySelectorAll(".name");
+const usernames = document.querySelectorAll(".username");
+
 
 addTweetButton.onclick = function(){
     postTweet(tweetInput.value, addedImage);
@@ -62,6 +67,9 @@ const postTweet = (tweet, addedImage) => {
             let originalTweet = document.getElementById("tweet");
             let clone = originalTweet.cloneNode(true);
             clone.style.display ="flex";
+
+            let profile = clone.querySelector(".profile_pic");
+            profile.src = localStorage.getItem("profile_picture");
       
             clone.id= data.tweet_id;
             clone.classList.add("tweet");
@@ -205,10 +213,18 @@ const getUserInfo = () =>{
 
         if(data.profile_picture != null){
             profilePictures.forEach(profilePicture => profilePicture.src = 'data:image/jpeg;base64,' + data.profile_picture);
+            localStorage.setItem("profile_picture", 'data:image/jpeg;base64,' + data.profile_picture)
         }
 
+        if(data.username != null){
+            usernames.forEach(username => username.textContent = "@" + data.username);
+            localStorage.setItem("username", data.username)
+        }
+
+        if(data.name != null){
+            userNames.forEach(userName => userName.textContent = data.name);
+        }
     })
-    
 }
 
 viewTweets();

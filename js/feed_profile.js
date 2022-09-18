@@ -20,6 +20,7 @@ searchInput.onkeyup = function() {
 
     if(searchInput.value == ""){
         searchResult.style.display = "none";
+        searchResult.innerHTML = '';
     }
 }
 
