@@ -1,10 +1,12 @@
 //Initialized variables
-const postTweetAPI ="http://localhost/twitter_test/post_tweet.php";
+const postTweetAPI = "http://localhost/twitter_test/post_tweet.php";
+const deleteTweetAPI = "http://localhost/twitter_test/delete_tweet.php?tweet_id=";
 const getUserTweetsAPI = "http://localhost/twitter_test/get_user_tweets.php?user_id=" + localStorage.getItem("userID").toString();
 const likeTweetAPI = "http://localhost/twitter_test/like_tweet.php?user_id="+ localStorage.getItem("userID").toString() + "&tweet_id=";
 const unlikeTweetAPI = "http://localhost/twitter_test/unlike_tweet.php?user_id="+ localStorage.getItem("userID").toString() + "&tweet_id=";
 const likedTweetAPI = "http://localhost/twitter_test/post_liked.php?user_id="+ localStorage.getItem("userID").toString() + "&tweet_id=";
 const getInfoAPI = "http://localhost/twitter_test/get_info.php?user_id=" + localStorage.getItem("userID").toString();
+//Initialized
 const backButton = document.getElementById("back_button")
 const tweetInput = document.getElementById("tweet_input");
 const addTweetButton = document.getElementById("add_tweet");
@@ -18,6 +20,7 @@ const coverImages = document.querySelectorAll(".cover");
 const profilePictures = document.querySelectorAll(".profile_picture");
 const userNames = document.querySelectorAll(".name");
 const usernames = document.querySelectorAll(".username");
+const bio = document.getElementById("bio");
 
 //Remove info from local storage and redirect to login page
 backButton.onclick = function() {
@@ -38,6 +41,7 @@ addTweetButton.onclick = function(){
     addedImage.value = "";
 }
 
+//Open profile modal on click
 modalButton.onclick = function() {
     editProfileModal.style.display = "block";
 }
@@ -220,9 +224,27 @@ const viewTweets = () =>{
                         likeButton.querySelector("#like_image").src = isLiked ? "images/heart.png" : "images/redheart.png";
                     })
                 });
-            }
-            
-            )
+            })
+
+            let deleteButton = clone.querySelector(".delete_btn");
+            deleteButton.setAttribute('data', data[i].tweet_id);
+
+            //When delete button is clicked, send a request to the server
+            deleteButton.addEventListener('click', (event) => {
+                let tweet_id = event.currentTarget.getAttribute('data');
+
+                //Send data to the server using fetch
+                fetch(deleteTweetAPI + tweet_id)
+                .then(response=>response.json())
+                .then(data =>  {
+                    if (data.error !== undefined) {
+                        //Do nothing
+                        return
+                    }
+                })
+
+                window.location.replace("profile_page.html");
+            });
             
             //Add div after the original tweet
             originalTweet.after(clone);
@@ -252,7 +274,7 @@ const getUserInfo = () =>{
 
         //If a bio is assigned, save it in the local storage
         if(data.bio != null){
-            userNames.forEach(userName => userName.textContent = data.bio);
+            bio.textContent = data.bio;
         }
 
         //If a cover image is assigned, save it in the local storage

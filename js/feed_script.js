@@ -14,7 +14,7 @@ const addedImage = document.getElementById("added_image");
 const addedImage2 = document.getElementById("added_image2");
 const likeButtons = document.querySelectorAll(".like_btn");
 const likeImage = document.getElementById("like_image");
-const profilePictures = document.querySelectorAll("#profile_picture");
+const profilePictures = document.querySelectorAll(".profile_picture");
 const userNames = document.querySelectorAll(".name");
 const usernames = document.querySelectorAll(".username");
 
@@ -244,12 +244,6 @@ const getUserInfo = () =>{
         if(data.name != null){
             userNames.forEach(userName => userName.textContent = data.name);
             localStorage.setItem("name", data.name)
-        }
-
-        //If a bio is assigned, save it in the local storage
-        if(data.bio != null){
-            userNames.forEach(userName => userName.textContent = data.bio);
-            localStorage.setItem("bio", data.bio)
         }
 
         //Save username in local storage
