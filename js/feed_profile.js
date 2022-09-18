@@ -1,5 +1,5 @@
 //Initialize variables
-const searchAPI = "http://localhost/twitter_test/search.php?id=";
+const searchAPI = "http://localhost/twitter_test/search.php?username=";
 const tweetModal = document.getElementById("tweet_modal");
 const tweetButton = document.getElementById("showtweet_btn");
 const closeTweet = document.getElementById("close_tweet");
@@ -16,7 +16,7 @@ const userID = localStorage.getItem("userID");
 //When user adds an input, search for results
 searchInput.onkeyup = function() {
     searchResult.style.display = "block";
-    // search();
+    search();
 
     if(searchInput.value == ""){
         searchResult.style.display = "none";
@@ -66,17 +66,30 @@ window.onclick = function(event) {
     }
 }
 
-//TO BE EDITED
 const search = () => {
-    var input, filter;
-    input = document.getElementById('myInput');
-    filter = input.value.lowercase().trim();
+    //Get search input and filter it
+    filteredUsername = searchInput.value.toLowerCase().trim();
 
-    fetch(searchAPI + userID)
+    //Send data to the server using fetch
+    fetch(searchAPI + filteredUsername)
     .then(response=>response.json())
-    .then(data => localStorage.setItem("userID", data.id))
+    .then(data => {
+        //Check if there's an error
+        if(data.message !== undefined){
+            //Do nothing
+            return
+        }
+
+        //Create a list item and add it results
+        let li = document.createElement("li");
+        li.appendChild(document.createTextNode(data.username));
+        li.id = data.id
+        searchResult.innerHTML = '';
+        searchResult.appendChild(li);
+    })
 }
 
 const refresh = () => {
+    //refresh feed pade
     window.location.replace("feed_page.html");
 }

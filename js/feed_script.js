@@ -37,7 +37,7 @@ const postTweet = (tweet, addedImage) => {
 
     const base64Image = btoa(encodeURIComponent(addedImageValue));
 
-    // Send the data to the database using POST method
+    //Send data to the server using fetch
     fetch(postTweetAPI, {
         method: 'POST',
         body: new URLSearchParams({"user_id": userID,
