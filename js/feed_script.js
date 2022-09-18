@@ -1,5 +1,7 @@
 const getTweetsAPI = "http://localhost/twitter_test/get_tweets.php?user_id=" + localStorage.getItem("userID").toString();
-const postTweetAPI ="http://localhost/twitter_test/post_tweet.php";;
+const postTweetAPI = "http://localhost/twitter_test/post_tweet.php";
+const likeTweetAPI = "http://localhost/twitter_test/like_tweet.php?user_id="+ localStorage.getItem("userID").toString() + "&tweet_id=";
+const likedTweetAPI = "http://localhost/twitter_test/post_liked.php?user_id="+ localStorage.getItem("userID").toString() + "&tweet_id=";
 const addTweetButton = document.getElementById("add_tweet");
 const addTweetButton2 = document.getElementById("add_tweet2");
 const tweetInput = document.getElementById("tweet_input");
@@ -21,6 +23,7 @@ addTweetButton2.onclick = function(){
     tweetInput2.value = "";
     addedImage2.value = "";
 }
+
 
 const postTweet = (tweet, addedImage) => {
     const addedImageValue = addedImage.value;
@@ -76,7 +79,6 @@ const postTweet = (tweet, addedImage) => {
     })
 
     //TO BE EDITED
-    // likeButtons.forEach(likeButton => addEventListener('click', liked))
 }
 
 const viewTweets = () =>{
@@ -113,22 +115,46 @@ const viewTweets = () =>{
                 image.src = 'data:image/jpeg;base64,' + data[i].image;
             }
             
-            console.log(data[i].likes_count);
             //Get likes
             let likes = clone.querySelector(".likes_number");
             likes.textContent = data[i].likes_count;
             likes.id = data[i].id;
-           
+
+            //Get like buttons
+            let likeButton = clone.querySelector(".like_btn");
+            likeButton.setAttribute('data', data[i].tweet_id);
+
+            fetch(likedTweetAPI + data[i].id)
+            .then(response => response.json())
+            .then(data =>{
+                if(data){
+                    likeButton.querySelector("#like_image").src = "images/redheart.png";
+                }
+            }
+            )
+
+            likeButton.addEventListener('click', (event) => {
+                let tweet_id = event.currentTarget.getAttribute('data');
+
+                //Send data to the server using fetch
+                fetch(likeTweetAPI + tweet_id)
+                .then(response=>response.json())
+                .then(data =>  {
+                    //Show error
+                    if (data.error !== undefined) {
+                        console.log("ho")
+                        //Do nothing
+                        return
+                    }
+                })
+            });
+            
             //Add div after the original tweet
             originalTweet.after(clone);
         }
     })
 }
 
-// const liked = () =>{
-//     likeImage.src = "images/redheart.png";
-// }
-
-
 viewTweets();
+
 

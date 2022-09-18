@@ -568,11 +568,6 @@ select{
     margin-right: 5px
 }
 
-.like_btn:hover{
-    background-color: rgb(193, 82, 102);
-    opacity: 50%;
-}
-
 .likes_number{
     margin-top: 15px;
 }
