@@ -20,5 +20,9 @@ $query->execute();
 
 $array = $query->get_result()->fetch_assoc();
 
+if (isset($array['profile_picture'])) {
+    $array['profile_picture'] = base64_encode(file_get_contents($array['profile_picture']));
+}
+
 echo json_encode($array);
 ?>

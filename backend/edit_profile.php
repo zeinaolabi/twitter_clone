@@ -27,10 +27,26 @@ if (empty($array)) {
     return;
 }
 
+if(isset($profilePicture) && !empty($profilePicture)){    
+    $img = base64_decode(str_replace('data:image/png;base64,', '', $image));
+    $split_image = 'png';
+    
+    $file_name = sprintf("images/%s.png", bin2hex(random_bytes(10)));
+    if(!file_put_contents($file_name, $img)){
+        http_response_code(400);
+        echo json_encode([
+            'error' => 400,
+            'message' => "Error: Invalid image"
+    ]);
+    
+        return;
+    }
+}  
+
 $query = $mysqli->prepare("UPDATE `users` 
 SET `name` = ?, `profile_picture` = ?, `cover_picture` = ?, `bio` = ?
 WHERE id = ?;");
-$query->bind_param("sssss", $name, $profilePicture, $coverPicture, $bio, $userID);
+$query->bind_param("sssss", $name, $file_name, $coverPicture, $bio, $userID);
 $query->execute();
 
 if ($userID === null) {

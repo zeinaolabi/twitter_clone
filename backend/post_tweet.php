@@ -34,10 +34,10 @@ if ($tweet_id === null) {
 }
 
 if(isset($image) && !empty($image)){
-    $img = base64_decode($image);
-    $split_image = pathinfo($img);
-
-    $file_name = "images/".$split_image['filename'].".".$split_image['extension'];
+    $img = base64_decode(str_replace('data:image/png;base64,', '', $image));
+    $split_image = 'png';
+    
+    $file_name = sprintf("images/%s.png", bin2hex(random_bytes(10)));
     if(!file_put_contents($file_name, $img)){
         http_response_code(400);
         echo json_encode([
@@ -45,7 +45,7 @@ if(isset($image) && !empty($image)){
             'message' => "Error: Invalid image"
     ]);
     
-    return;
+        return;
     }
 
     $query = $mysqli->prepare("INSERT INTO `images` (`image`, `tweet_id`) VALUE (?, ?) "); 

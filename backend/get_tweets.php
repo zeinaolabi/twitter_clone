@@ -15,7 +15,7 @@ if(!isset($userID) || empty($userID)){
     return;
 }
 
-$query = $mysqli->prepare("SELECT tweet, image, tweets.id, users.username, users.name, users.profile_picture
+$query = $mysqli->prepare("SELECT tweet, images.image, tweets.id, users.username, users.name, users.profile_picture
 FROM tweets
 LEFT JOIN images
 ON tweets.id = images.tweet_id
@@ -27,7 +27,8 @@ WHERE tweets.user_id IN (
     INNER JOIN follows
     ON users.id = follows.user_id
     WHERE users.id = ?
-)");
+)
+ORDER BY tweets.id desc LIMIT 20;");
 $query->bind_param("s", $userID);
 $query->execute();
 $array = $query->get_result();
@@ -47,6 +48,16 @@ while($a = $array->fetch_assoc()){
     $tweets[$a["id"]] = $a;
     $tweets[$a["id"]]['likes_count'] = 0;
     $tweets[$a["id"]]['tweet_id'] = $a["id"];
+
+    if (isset($a['image'])) {
+        $tweets[$a["id"]]['image'] = base64_encode(file_get_contents($a['image']));
+    }
+
+
+    if (isset($a['profile_picture'])) {
+        $tweets[$a["id"]]['profile_picture'] = base64_encode(file_get_contents($a['profile_picture']));
+    }
+
 }
 
 $query = sprintf("SELECT COUNT(*) as count, likes.tweet_id
