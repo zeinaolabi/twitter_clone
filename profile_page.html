@@ -22,9 +22,9 @@
 
             <div class="popup">
                 <button id="popup_btn" class="pages profilebtn">
-                    <img src="images/batman_profile.jpeg" alt="profile image">
+                    <img class="profile_picture" src="images/profile.webp" alt="profile image">
                     <div class="button_title">
-                        <p>Batman<br/>
+                        <span class="name"></span>
                         <span class="username">@BruceWayne</span></p>
      
                         <span>...</span>
@@ -32,8 +32,8 @@
                 </button>
                 <div class="popuptext" id="myPopup">
                     <div class="account_info">
-                        <img class="profile_pic" src="images/batman_profile.jpeg" alt="profile image">
-                        <p class="tweet_user">Batman<br/>
+                        <img class="profile_pic" src="images/profile.webp" alt="profile image">
+                        <p class="tweet_user"><span class="name"></span><br/>
                             <span class="username">@BruceWayne</span></p>
                     </div>
 
@@ -47,22 +47,22 @@
                 <div class="top_bar">
                     <button id="back_button" class="back"><img src="images/arrowleft.png" src="back icon" width="15px" height="15px"></button>
                     <div class="bar_content">
-                        <h4>Batman</h4>
+                        <h4><span class="name"></span></h4>
                         <span class="tweets_number">6 Tweets</span>
                     </div>
                 </div>
 
                 <div class="profile">
-                    <img class="cover" src="images/batman.webp" alt="cover img">
+                    <img class="cover" src="images/cover.webp" alt="cover img">
 
                     <div class="profile_content">
-                        <img class="profile_image"src="images/batman_profile.jpeg" alt="profile picture">
+                        <img class="profile_image profile_picture"src="images/profile.webp" alt="profile picture">
                         <button id="editmodal_btn" class="edit_profile blackbtn">Edit Profile</button>
                     </div>
                 </div>
 
                 <div class="profile_info">
-                    <p class="tweet_user">Batman<br/>
+                    <p class="tweet_user"><span class="name"></span><br/>
                         <span class="username">@BruceWayne</span></p>
 
                     <p class="bio">
@@ -75,11 +75,11 @@
 
             <div id="tweets_section">
                 <div id="tweet" class="tweet">
-                    <img class="profile_pic" src="images/batman_profile.jpeg" alt="profile image">
+                    <img class="profile_pic profile_picture" src="images/profile.webp" alt="profile image">
     
                     <div class="tweet_content">
                         <button class="delete_tweet"><img src="images/trash.png" alt="delete image" width="20px" height="20px"></button>
-                        <p class="tweet_user">Batman <span class="username">@BruceWayne</span></p>
+                        <p class="tweet_user"><span class="name"></span><span class="username">@BruceWayne</span></p>
                         <p class="tweet_text"></p>
                         <img class="tweet_image" src="" alt="tweet image">
     
@@ -107,7 +107,7 @@
             <span id="close_tweet" class="close">&times;</span>
 
             <div class="tweet_area">
-                <img class="profile_pic" src="images/batman_profile.jpeg" alt="profile image">
+                <img class="profile_pic" src="images/profile.webp" alt="profile image">
                 <input id="tweet_input" class="tweet_input" type="text" placeholder="What's happening?">
             </div>
 
@@ -139,13 +139,13 @@
                 <div class="profile">
                     <label for="image">
                         <input type="file" name="image" id="profile_image" style="display:none;"/>
-                        <img class="cover hover_effect" src="images/batman.webp" alt="cover image" />
-                     </label>
+                        <img class="cover hover_effect" src="images/cover.webp" alt="cover image"/>
+                    </label>
 
                     <div class="profile_content">
-                        <label for="image">
-                            <input type="file" name="image" id="cover_image" style="display:none;"/>
-                            <img class="profile_image hover_effect"src="images/batman_profile.jpeg" alt="profile picture">
+                        <label for="image2">
+                            <input type="file" name="image2" style="display:none;"/>
+                            <img class="profile_image hover_effect" src="images/profile.webp" alt="profile picture">
                         </label>
                     </div>
                 </div>

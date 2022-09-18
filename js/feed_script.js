@@ -20,6 +20,7 @@ const usernames = document.querySelectorAll(".username");
 
 //On tweet header click on the button to post a tweet
 addTweetButton.onclick = function(){
+    //Empty content after posting
     postTweet(tweetInput.value, addedImage);
     tweetInput.value = "";
     addedImage.value = "";
@@ -27,6 +28,7 @@ addTweetButton.onclick = function(){
 
 //On tweet modal click on the button to post a tweet
 addTweetButton2.onclick = function(){
+    //Empty modal content after posting
     postTweet(tweetInput2.value, addedImage2);
     tweetModal.style.display = "none";
     tweetInput2.value = "";
@@ -233,9 +235,21 @@ const getUserInfo = () =>{
             localStorage.setItem("profile_picture", 'data:image/jpeg;base64,' + data.profile_picture)
         }
 
+        //If a cover image is assigned, save it in the local storage
+        if(data.cover_picture != null){
+            localStorage.setItem("cover", 'data:image/jpeg;base64,' + data.cover_picture)
+        }
+
         //If a name is assigned, save it in the local storage
         if(data.name != null){
             userNames.forEach(userName => userName.textContent = data.name);
+            localStorage.setItem("name", data.name)
+        }
+
+        //If a bio is assigned, save it in the local storage
+        if(data.bio != null){
+            userNames.forEach(userName => userName.textContent = data.bio);
+            localStorage.setItem("bio", data.bio)
         }
 
         //Save username in local storage
