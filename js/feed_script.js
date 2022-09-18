@@ -1,6 +1,7 @@
 const getTweetsAPI = "http://localhost/twitter_test/get_tweets.php?user_id=" + localStorage.getItem("userID").toString();
 const postTweetAPI = "http://localhost/twitter_test/post_tweet.php";
 const likeTweetAPI = "http://localhost/twitter_test/like_tweet.php?user_id="+ localStorage.getItem("userID").toString() + "&tweet_id=";
+const unlikeTweetAPI = "http://localhost/twitter_test/unlike_tweet.php?user_id="+ localStorage.getItem("userID").toString() + "&tweet_id=";
 const likedTweetAPI = "http://localhost/twitter_test/post_liked.php?user_id="+ localStorage.getItem("userID").toString() + "&tweet_id=";
 const addTweetButton = document.getElementById("add_tweet");
 const addTweetButton2 = document.getElementById("add_tweet2");
@@ -95,6 +96,7 @@ const viewTweets = () =>{
 
         //Loop over the response
         for(let i = 0; i < Object.keys(data).length; i++){
+            console.log(data)
             //Make a clone of the tweet model
             let originalTweet = document.getElementById("tweet");
             let clone = originalTweet.cloneNode(true);
@@ -127,27 +129,31 @@ const viewTweets = () =>{
             fetch(likedTweetAPI + data[i].id)
             .then(response => response.json())
             .then(data =>{
-                if(data){
-                    likeButton.querySelector("#like_image").src = "images/redheart.png";
-                }
+
+                likeButton.setAttribute('isLiked', data);
+                likeButton.querySelector("#like_image").src = data ? "images/redheart.png" : "images/heart.png";
+
+                likeButton.addEventListener('click', (event) => {
+                    let tweet_id = event.currentTarget.getAttribute('data');
+                    let isLiked = event.currentTarget.getAttribute('isLiked') === "true";
+                    const tweetApi = isLiked ? unlikeTweetAPI : likeTweetAPI;
+                    //Send data to the server using fetch
+                    fetch(tweetApi + tweet_id)
+                    .then(response=>response.json())
+                    .then(data =>  {
+                        //Show error
+                        if (data.error !== undefined) {
+                            //Do nothing
+                            return
+                        }
+
+                        likeButton.setAttribute('isLiked', !isLiked);
+                        likeButton.querySelector("#like_image").src = isLiked ? "images/heart.png" : "images/redheart.png";
+                    })
+                });
             }
+            
             )
-
-            likeButton.addEventListener('click', (event) => {
-                let tweet_id = event.currentTarget.getAttribute('data');
-
-                //Send data to the server using fetch
-                fetch(likeTweetAPI + tweet_id)
-                .then(response=>response.json())
-                .then(data =>  {
-                    //Show error
-                    if (data.error !== undefined) {
-                        console.log("ho")
-                        //Do nothing
-                        return
-                    }
-                })
-            });
             
             //Add div after the original tweet
             originalTweet.after(clone);
