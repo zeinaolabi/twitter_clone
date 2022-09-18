@@ -25,6 +25,22 @@ if(!isset($userID) || empty($userID)){
     return;   
 } 
 
+$query = $mysqli->prepare("SELECT id FROM likes WHERE `user_id` = ? and `tweet_id` = ?");
+$query->bind_param("ss", $userID, $tweetID);
+$query->execute();
+
+$array = $query->get_result()->fetch_assoc();
+
+if (!empty($array)) {
+    http_response_code(400);
+    echo json_encode([
+        'error' => 400,
+        'message' => 'Post already liked'
+    ]);
+    
+    return;
+}
+
 $query = $mysqli->prepare("INSERT INTO `likes` (`user_id`, `tweet_id`) VALUE (?, ?) "); 
 $query->bind_param("ss", $userID, $tweetID);
 $query->execute();
