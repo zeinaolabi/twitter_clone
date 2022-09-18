@@ -48,7 +48,6 @@ while($a = $array->fetch_assoc()){
     $tweets[$a["id"]]['likes_count'] = 0;
     $tweets[$a["id"]]['tweet_id'] = $a["id"];
 }
-var_dump($tweets);
 
 $query = sprintf("SELECT COUNT(*) as count, likes.tweet_id
 FROM likes
