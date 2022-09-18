@@ -5,6 +5,7 @@ require_once("headers.php");
 
 $userID = $_GET["user_id"];
 
+//Validate input
 if(!isset($userID) || empty($userID)){
     http_response_code(400);
     echo json_encode([
@@ -15,7 +16,7 @@ if(!isset($userID) || empty($userID)){
     return;
 }
 
-// prepares an SQL statement for execution
+//Prepare and execute to get followers
 $query = $mysqli->prepare("SELECT follows.user_id, users.username
 FROM follows 
 INNER JOIN users
@@ -26,12 +27,13 @@ $query->execute();
 
 $array = $query->get_result();
 
+//Save result in followings array
 $followings = [];
-
 while($a = $array->fetch_assoc()){
     $followings[] = $a;
 }
 
+//If the array was empty, send back an error
 if (empty($followings)) {
     http_response_code(400);
     echo json_encode([

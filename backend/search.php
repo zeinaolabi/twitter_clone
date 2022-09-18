@@ -5,6 +5,8 @@ require_once("headers.php");
 
 $username = $_GET["username"];
 
+
+//Validate input
 if(!isset($username) || empty($username)){
     http_response_code(400);
     echo json_encode([
@@ -15,13 +17,14 @@ if(!isset($username) || empty($username)){
     return;
 }
 
-// prepares an SQL statement for execution
+//Prepare and execute SQL query to get id and username of user
 $query = $mysqli->prepare("SELECT id, username FROM users WHERE username = ?");
 $query->bind_param("s", $username);
 $query->execute();
 
 $array = $query->get_result()->fetch_assoc();
 
+//If no result, send an error
 if (empty($array)) {
     http_response_code(400);
     echo json_encode([

@@ -5,6 +5,7 @@ require_once("headers.php");
 $tweetID = $_GET["tweet_id"];
 $userID = $_GET["user_id"];
 
+//Validate input
 if(!isset($tweetID) || empty($tweetID)){ 
     http_response_code(400);
     echo json_encode([
@@ -15,6 +16,7 @@ if(!isset($tweetID) || empty($tweetID)){
     return;   
 }   
 
+//Validate input
 if(!isset($userID) || empty($userID)){ 
     http_response_code(400);
     echo json_encode([
@@ -25,12 +27,14 @@ if(!isset($userID) || empty($userID)){
     return;   
 } 
 
+//Prepare and execute SQL query to get like id
 $query = $mysqli->prepare("SELECT id FROM likes WHERE `user_id` = ? and `tweet_id` = ?");
 $query->bind_param("ss", $userID, $tweetID);
 $query->execute();
 
 $array = $query->get_result()->fetch_assoc();
 
+//If there was no result, send back an error
 if (!empty($array)) {
     http_response_code(400);
     echo json_encode([
@@ -41,12 +45,14 @@ if (!empty($array)) {
     return;
 }
 
+//Prepare and execute SQL query to like a tweet
 $query = $mysqli->prepare("INSERT INTO `likes` (`user_id`, `tweet_id`) VALUE (?, ?) "); 
 $query->bind_param("ss", $userID, $tweetID);
 $query->execute();
 
 $tweet_id = mysqli_insert_id($mysqli);
 
+//If no id was inserted, send back an error
 if ($tweet_id === null) {
     http_response_code(400);
     echo json_encode([

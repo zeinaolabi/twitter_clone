@@ -1,10 +1,10 @@
 <?php
-//Get connection and headers
 include("connection.php");
 require_once("headers.php");
 
 $userID = $_GET["user_id"];
 
+//Validate input
 if(!isset($userID) || empty($userID)){
     http_response_code(400);
     echo json_encode([
@@ -15,7 +15,7 @@ if(!isset($userID) || empty($userID)){
     return;
 }
 
-// prepares an SQL statement for execution
+//Prepare and execute SQL query to get followings
 $query = $mysqli->prepare("SELECT follows.followeduser_id, users.username
 FROM follows 
 INNER JOIN users
@@ -26,13 +26,14 @@ $query->execute();
 
 $array = $query->get_result();
 
-$followings = [];
-
+//Save result in followings array
+$followers = [];
 while($a = $array->fetch_assoc()){
-    $followings[] = $a;
+    $followers[] = $a;
 }
 
-if (empty($followings)) {
+//If the array was empty, send back an error
+if (empty($followers)) {
     http_response_code(400);
     echo json_encode([
         'error' => 400,
@@ -42,7 +43,7 @@ if (empty($followings)) {
     return;
 }
 
-$json = json_encode($followings);
+$json = json_encode($followers);
 echo $json;
 
 $query->close();
