@@ -1,8 +1,9 @@
 const getTweetsAPI = "http://localhost/twitter_test/get_tweets.php?user_id=" + localStorage.getItem("userID").toString();
-const postTweetAPI = "http://localhost/twitter_test/post_tweet.php";
 const likeTweetAPI = "http://localhost/twitter_test/like_tweet.php?user_id="+ localStorage.getItem("userID").toString() + "&tweet_id=";
 const unlikeTweetAPI = "http://localhost/twitter_test/unlike_tweet.php?user_id="+ localStorage.getItem("userID").toString() + "&tweet_id=";
 const likedTweetAPI = "http://localhost/twitter_test/post_liked.php?user_id="+ localStorage.getItem("userID").toString() + "&tweet_id=";
+const getInfoAPI = "http://localhost/twitter_test/get_info.php?user_id=" + localStorage.getItem("userID").toString();
+const postTweetAPI = "http://localhost/twitter_test/post_tweet.php";
 const addTweetButton = document.getElementById("add_tweet");
 const addTweetButton2 = document.getElementById("add_tweet2");
 const tweetInput = document.getElementById("tweet_input");
@@ -11,6 +12,7 @@ const addedImage = document.getElementById("added_image");
 const addedImage2 = document.getElementById("added_image2");
 const likeButtons = document.querySelectorAll(".like_btn");
 const likeImage = document.getElementById("like_image");
+const profilePictures = document.querySelectorAll("#profile_picture");
 
 addTweetButton.onclick = function(){
     postTweet(tweetInput.value, addedImage);
@@ -39,47 +41,58 @@ const postTweet = (tweet, addedImage) => {
         return
     }
 
-    const base64Image = btoa(encodeURIComponent(addedImageValue));
-
-    //Send data to the server using fetch
-    fetch(postTweetAPI, {
-        method: 'POST',
-        body: new URLSearchParams({"user_id": userID,
-        "tweet": tweet,
-        "image": base64Image
-    }),
-    })
-    .then(response=>response.json())
-    .then(
-        data =>  {
-        //Show error
-        if (data.message == "") {
-            //Do nothing - TO BE EDITED
-            return
-        }
-
-        let originalTweet = document.getElementById("tweet");
-        let clone = originalTweet.cloneNode(true);
-        clone.style.display ="flex";
-  
-        clone.id= data.tweet_id;
-        clone.classList.add("tweet");
-        let paragraph = clone.querySelector(".tweet_text");
-        paragraph.textContent = tweet;
-        let image = clone.querySelector(".tweet_image");
-
-        if(addedImageValue == ""){
-            image.style.display = "none";
-        }
-        else{
-            if(file){
-                image.src = URL.createObjectURL(file);
+    const sendTweetRequest = (base64Image) => {
+        //Send data to the server using fetch
+        fetch(postTweetAPI, {
+            method: 'POST',
+            body: new URLSearchParams({"user_id": userID,
+            "tweet": tweet,
+            "image": base64Image
+        }),
+        })
+        .then(response=>response.json())
+        .then(
+            data =>  {
+            //Show error
+            if (data.message == "") {
+                //Do nothing - TO BE EDITED
+                return
             }
-        }
-        originalTweet.after(clone);
-    })
+    
+            let originalTweet = document.getElementById("tweet");
+            let clone = originalTweet.cloneNode(true);
+            clone.style.display ="flex";
+      
+            clone.id= data.tweet_id;
+            clone.classList.add("tweet");
+            let paragraph = clone.querySelector(".tweet_text");
+            paragraph.textContent = tweet;
+            let image = clone.querySelector(".tweet_image");
+    
+            if(addedImageValue == ""){
+                image.style.display = "none";
+            }
+            else{
+                if(file){
+                    image.src = URL.createObjectURL(file);
+                }
+            }
+            originalTweet.after(clone);
+        })
+    }
 
-    //TO BE EDITED
+    const reader = new FileReader();
+    reader.addEventListener("load", (event) => {
+        // convert image file to base64 string
+        sendTweetRequest(event.currentTarget.result)
+    }, false);
+
+    if (file) {
+        reader.readAsDataURL(file);
+    }
+    else{
+        sendTweetRequest(null);
+    }
 }
 
 const viewTweets = () =>{
@@ -119,8 +132,9 @@ const viewTweets = () =>{
 
             //Get Profile picture
             let profilePic = clone.querySelector(".profile_pic");
+        
             if(data[i].profile_picture != null){
-                profilePic.src = 'data:image/jpeg;base64,' + data[i].profile_picture;
+                profilePic.src = "data:image/png;base64," + data[i].profile_picture;
             }
 
             //Get the image if avaiable and show it
@@ -129,7 +143,7 @@ const viewTweets = () =>{
                 image.style.display = "none";
             }
             else{
-                image.src = 'data:image/jpeg;base64,' + data[i].image;
+                image.src = "data:image/png;base64," + data[i].image;
             }
             
             //Get likes
@@ -178,6 +192,26 @@ const viewTweets = () =>{
     })
 }
 
+const getUserInfo = () =>{
+
+    fetch(getInfoAPI)
+    .then(response => response.json())
+    .then(data =>{
+        //Show error
+        if (data.error !== undefined) {
+            //Do nothing
+            return
+        }
+
+        if(data.profile_picture != null){
+            profilePictures.forEach(profilePicture => profilePicture.src = 'data:image/jpeg;base64,' + data.profile_picture);
+        }
+
+    })
+    
+}
+
 viewTweets();
+getUserInfo();
 
 
