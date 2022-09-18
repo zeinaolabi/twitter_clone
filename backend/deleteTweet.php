@@ -41,7 +41,7 @@ $query = $mysqli->prepare("DELETE FROM `images` WHERE tweet_id = ?");
 $query->bind_param("s", $tweet_id);
 $query->execute();
 
-$json = json_encode($array["status"] = ['message' => "success!"]);
+$json = json_encode(['message' => "success!"]);
 echo $json;
 
 $query->close();

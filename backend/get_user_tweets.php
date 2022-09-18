@@ -18,7 +18,8 @@ if(!isset($userID) || empty($userID)){
 $query = $mysqli->prepare("SELECT tweet, image, tweets.id
 FROM tweets
 LEFT JOIN images
-ON tweets.id = images.tweet_id");
+ON tweets.id = images.tweet_id
+WHERE tweets.user_id = ?");
 
 $query->bind_param("s", $userID);
 $query->execute();

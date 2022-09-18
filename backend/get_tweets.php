@@ -44,6 +44,7 @@ $tweets = [];
 while($a = $array->fetch_assoc()){
     $tweets[$a["id"]] = $a;
     $tweets[$a["id"]]['likes_count'] = 0;
+    $tweets[$a["id"]]['tweet_id'] = $a["id"];
 }
 
 $query = sprintf("SELECT COUNT(*) as count, likes.tweet_id
@@ -56,10 +57,10 @@ $query->execute();
 $array = $query->get_result();
 
 while($a = $array->fetch_assoc()){
-    $tweets[$a["tweet_id"]]['likes_counts'] = $a['count'];
+    $tweets[$a["tweet_id"]]['likes_count'] = $a['count'];
 }
 
-$json = json_encode($tweets);
+$json = json_encode(array_values($tweets));
 echo $json;
 
 $query->close();

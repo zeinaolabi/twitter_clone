@@ -1,11 +1,8 @@
 <?php
-error_reporting(E_ALL);
-ini_set("display_errors", 1);
-
 include("connection.php");
 require_once("headers.php");
 
-$username = $_POST["username"];
+$username = strtolower(trim($_POST["username"]));
 $email = $_POST["email"];
 $password = $_POST["password"];
 $birthDate = $_POST["birth_date"];
@@ -80,13 +77,9 @@ $query = $mysqli->prepare("INSERT INTO `users` ( `username`, `email`, `password`
 $query->bind_param("ssss", $username, $email, $password, $birthDate);
 $query->execute();
 
-$query = $mysqli->prepare("SELECT id  FROM users WHERE email = ?");
-$query->bind_param("s", $email);
-$query->execute();
+$userID = mysqli_insert_id($mysqli);
 
-$array = $query->get_result();
-
-if (empty($array)) {
+if ($userID === null) {
     http_response_code(400);
     echo json_encode([
         'error' => 400,
@@ -96,7 +89,7 @@ if (empty($array)) {
     return;
 }
 
-$json = json_encode($array->fetch_assoc());
+$json = json_encode(['userID' => $userID]);
 echo $json;
 
 $query->close();
