@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="images/twitter_logo.png" type="image/icon type" width="50%">
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <title>Followers, Followings, Blocked users</title>
+</head>
+<body>
+    <div class="main_container">
+        <div class="left_side">
+            <div class="buttons">
+                <button id="twitter_button" class="mainpage_btn"><img src="images/twitter_logo_white.png" width="40px" height="40px"></button>
+                <button id="home_button" class="pages"><img class="icon" src="images/home.png"><span class="button_title">Home</span></button>
+                <button id="profile_button" class="pages"><img class="icon" src="images/profile.png"><span class="button_title">Profile</span></button>
+            </div>
+        </div>
+
+        <div class="mid_side">
+            <div class="profile_header">
+                <div class="follower_buttons">
+                    <button id="followers_button" class="pages">Followers</button>
+                    <button id="following_button" class="pages">Followings</button>
+                    <button id="blocked_btn" class="pages">Blocked</button>
+                </div>
+            </div>
+
+            <div id="info_section">
+                <div class="user"></div>
+                <ul id="user_result" class="user_result">     
+                </ul>
+                
+            </div>
+        </div>
+
+        <div class="right_side">
+        </div>
+    </div>
+    <script src="js/followings_script.js"></script>
+</body>
+</html>

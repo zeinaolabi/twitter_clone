@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Twitter. It's what's happening</title>
+
+    <link rel="icon" href="images/twitter_logo.png" type="image/icon type" width="50%">
+    <link rel="stylesheet" href="styles/style.css">
+</head>
+
+<body>
+    <!--Start of main container-->
+    <div class="main_container dir_col"> 
+        <!--Start of hero side-->
+        <div class="hero_side">
+            <img src="images/twitter_background.png" alt="twitter background">
+        </div>
+        <!--End of hero side-->
+    
+        <!--Start of login side-->
+        <div class="login_side">
+            <img class="logo" src="images/twitter_logo_white.png" alt="twitter logo">
+    
+            <div class="login_contnet">
+                <h1 class="title">Happening now</h1>
+                <h2 class="subtitle">Join Twitter today.</h2>
+    
+                <button class="whitebtn"><img src="images/google.png" alt="google image" width="8%">Sign up with google</button>
+                <button class="whitebtn"><img src="images/apple.png" alt="apple image" width="8%">Sign up with Apple</button>
+
+                <div class="divider">
+                    <hr/><span>or</span><hr/>
+                </div>
+
+                <button id="signupbtn_modal" class="bluebtn">Sign up with email</button>
+        
+                <p class="terms">By signing up, you agree to the 
+                    <a class="bluetext" href="#">Terms of Service</a> and 
+                    <a class="bluetext" href="#">Privacy Policy</a>, including 
+                    <a class="bluetext" href="#">Cookie Use</a>.</p>
+        
+                <div class="signin_section">
+                    <h4 class="subtitle">Already have an account?</h4>
+                    <button id="signinbtn_modal" class="blackbtn">Sign in</button>
+                </div>
+            </div> 
+        </div>
+        <!--End of login side-->
+    </div>
+    <!--End of main container-->
+
+    <!--Start of footer-->
+    <footer>
+        <ul>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Help Center</a></li>
+            <li><a href="#">Terms of Service</a></li>
+            <li><a href="#">Privacy Policy</a></li>
+            <li><a href="#">Cookie Policy</a></li>
+            <li><a href="#">Accessibility</a></li>
+            <li><a href="#">Ads info</a></li>
+            <li><a href="#">Blog</a></li>
+            <li><a href="#">Status</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Brand Resources</a></li>
+            <li><a href="#">Advertising</a></li>
+            <li><a href="#">Marketing</a></li>
+            <li><a href="#">Twitter for Business</a></li>
+            <li><a href="#">Developers</a></li>
+            <li><a href="#">Directory</a></li>
+            <li><a href="#">Settings</a></li>
+            <li><a href="#">© 2022 Twitter, Inc.</a></li>
+        </ul>
+    </footer>
+    <!--End of footer-->
+
+    <!--Start of registeration modal-->
+    <div id="signup_modal" class="modal">
+        <!-- Modal content -->
+        <div class="modal_content">
+        <div class="signup_content">
+            <span id="close_signup" class="close">&times;</span>
+
+            <h1>Create your account</h1>
+            <div class="textfield">
+                <input id="new_name" type ="text" required>
+                <label>Name</label>
+            </div>
+
+            <div class="textfield">
+                <input id="new_email" type ="email" required>
+                <label>Email</label>
+            </div> 
+
+            <div class="textfield">
+                <input id="new_password" type ="password" required>
+                <label>Password</label>
+            </div>
+
+            <div class="date">
+                <h5>Date of birth</h5>
+                <p>This will not be shown publicly. Confirm your own age, even if this account is for a business, a pet, or something else.</p>
+                <div class="dropdown">
+
+                <!--Drop down menus to be added on JS-->
+                <div class="dropdown">
+                    <select class="year" id="year"></select>
+                    <select class="month" id="month"></select>
+                    <select class="day" id="day"></select>
+                </div>
+            </div> 
+        </div> 
+        </div>    
+        <button id="register" class="registerbtn">Register</button>  
+        <h4 class="error" id="signup_error"></h4>            
+        </div>
+    </div>
+    <!--End of registeration modal-->
+
+    <!--Start of sign in modal-->
+    <div id="signin_modal" class="modal signin_modal">
+        <!-- Modal content -->
+        <div class="modal_content">
+        <div class="signin_content">
+            <span id="close_signin" class="close">&times;</span>
+
+            <img src="images/twitter_logo_white.png" width="50px" height="50px">
+
+            <h1>Sign in to Twitter</h1>
+
+            <div class="textfield">
+                <input id="email" type ="email" required>
+                <label>Email</label>
+            </div> 
+            
+            <div class="textfield">
+                <input id="password" type ="password" required>
+                <label>Password</label>
+            </div>
+
+            <button id="login" class="loginbtn">Log in</button>
+            <div class="create_account">
+                <p>Don't have an account? </p>
+                <button id="create_account" class="textbtn">Sign up</button>
+            </div>
+            <h4 class="error" id="signin_error"></h4> 
+        </div>
+        </div>
+        </div>
+    </div>
+    <!--End of sign in modal-->
+
+    <script src="js/login_script.js"></script>
+</body>
+</html>

@@ -1,0 +1,1096 @@
+*{
+    margin: 0; 
+    padding: 0; 
+} 
+
+body{ 
+    box-sizing: border-box; 
+    font-family: 'Lato', sans-serif; 
+    background-color: black;
+} 
+
+/*Start of Login Page*/
+.main_container{ 
+    display: flex; 
+    margin: 0; 
+    height: 100%; 
+} 
+
+h2{
+    font-size: 2rem;
+}
+
+.hero_side{ 
+    width: 55%; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+} 
+
+.hero_side img{ 
+    width: 100%; 
+    height: 100%;
+} 
+
+.login_side{ 
+    width: 45%; 
+    color: white; 
+    display: flex;
+    flex-direction: column;
+    padding-left: 1.5rem;
+    justify-content: left;
+    align-items: left;
+}
+
+button{
+    width: 19rem;
+    padding: 0.5rem 0;
+    margin-top: 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: bold;
+    border: none;
+    display: flex;
+    outline: none;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo{
+    padding: 8rem 0 4rem 0;
+    width: 60px;
+    height: 60px;
+    filter: brightness(85%);
+}
+
+.login_content{
+    display: flex;
+    flex-direction: column;
+    padding-left: 1rem;
+}
+
+.title{
+    font-size: 4rem;
+    padding-bottom: 2rem;
+}
+
+.subtitle{
+    padding-bottom: 1rem;
+    width: 18rem;
+}
+
+.divider{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 18rem;
+    font-size: 14px;
+    margin: 0.5rem 0;
+}
+
+hr{
+    width: 8rem;
+    margin: 0.5rem;
+    border: 0.2px solid #595D61;
+    filter: brightness(50%);
+}
+
+.bluetext{
+    color: #1A8CD8;
+}
+
+.bluebtn{
+    background-color: #2991d7;
+    color: white;
+    margin-top: 0;
+    padding: 0.8rem
+}
+
+.bluebtn:hover{
+    background-color: #1A8CD8;
+}
+
+.terms{
+    padding-top: 0.5rem;
+    font-size: 0.7rem;
+    width: 18rem;
+    color: #595D61;
+}
+
+.signin_section{
+    padding-top: 4.5rem;
+}
+
+.blackbtn{
+    background-color: black;
+    border: 1px solid #536371;
+    color: #1A8CD8;
+    margin-top: 0;
+    padding: 0.8rem
+}
+
+.blackbtn:hover{
+    background-color: #061019;
+}
+
+footer{
+    padding: 0.5rem;
+    color:grey;
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+ul{
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+}
+
+li{
+    margin: 1rem 0;
+    padding: 0 0.5rem;
+}
+
+a{
+    text-decoration: none;
+    color: grey;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+/*Start of Registeration/Sign in design*/
+.modal{
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+  
+.modal_content{
+    background-color: black;
+    margin: 10% auto;
+    padding: 5vw;
+    border: none;
+    width: 28rem;
+    height: 32rem;
+    border-radius: 20px;
+}
+  
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal_content h1{
+    color: white;
+}
+
+.textfield{
+    position: relative;
+    border-radius: 5px;
+    margin: 2vh 0;
+}
+
+.textfield input{
+    width: 100%;
+    padding: 0.5vh 0.5vw;
+    height: 45px;
+    font-size: 16px;
+    background: none;
+    outline: none;
+    color: white;
+    border: 1px solid rgb(92, 92, 92);
+    border-radius: 5px;
+}
+
+.textfield input:focus{
+    border: 1px solid #165F93;
+}
+
+.textfield label{
+    position: absolute;
+    top: 35%;
+    left: 5px;
+    color: rgb(92, 92, 92);
+    font-size: 16px;
+    pointer-events: none;
+}
+
+.textfield input:focus ~ label,
+.textfield input:valid ~ label{
+    padding-top:5px;
+    top: -0.5px;
+    color: #165F93;
+    transition: 0.2s;
+    font-size: 14px;
+}
+
+.textfield input:focus ~ span::before,
+.textfield input:valid ~ span::before{
+    width: 100%;
+}
+
+.date{
+    color: white;
+    margin-top: 4vh;
+}
+
+.date p{
+    color: grey;
+    font-size: 14px;
+    margin-top: 1vh;
+    margin-bottom: 2vh;
+}
+
+.dropdown{
+    display: flex;
+    flex-direction: wrap;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+select{
+    padding: 1vh 0.5vw;
+    height: 45px;
+    font-size: 16px;
+    background: none;
+    outline: none;
+    color: white;
+    border: 1px solid rgb(92, 92, 92);
+    border-radius: 5px; 
+}
+
+.year{
+    width: 45%;
+}
+
+.month{
+    width: 30%;
+}
+
+.day{
+    width: 20%;
+}
+
+.registerbtn{
+    background-color: #767979;
+    margin-top: 4vh;
+    font-size: 18px;
+    width: 100%;
+    height: 5vh;
+}
+
+.textbtn{
+    margin: 0;
+    padding: 0;
+    width: fit-content;
+    background: none;
+    background-color: transparent;
+    outline: none;
+    border: none;
+    color:#1A8CD8;
+    font-weight: normal;
+    margin: 0 5px;
+}
+
+.signin_content{
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+}
+
+.loginbtn{
+    max-width: 20vw;
+    height: 40px;
+    margin-left: 1vw;
+}
+
+.create_account{
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    margin-top: 5vh;
+    color: #767979;
+    margin-left: 1vw;
+}
+
+.error{
+    color: red;
+    text-align: center;
+    margin-top: 10px;
+}
+/*End Registeration/Sign in design*/
+/*End of modal */
+
+/*End of Login Page*/
+
+/*Start of feed page*/
+.left_side{
+    width: 500px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: white;
+    position: sticky;
+}
+
+.left_side .logo{
+    margin: 0;
+    padding: 0;
+}
+
+.icon{
+    width: 25px;
+    height: 25px;
+    padding-right: 1vw;
+}
+
+.buttons{
+    margin-left: auto;
+    width: 50%;
+}
+
+.mainpage_btn{
+    background-color: transparent;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    text-align: center;
+
+}
+
+.mainpage_btn:hover{
+    background-color:#212327 ;
+}
+
+.pages{
+    background-color: transparent;
+    color: white;
+    width: 50%;
+    font-weight: normal;
+    font-size: 20px;
+    padding: 0.8rem 2rem;
+}
+
+.pages:hover{
+    background-color:#212327 ;
+}
+
+.tweetbtn{
+    max-width: 90%;
+    margin-top: 1vh;
+    padding: 1.5vh 2vw;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.profile_pic{
+    border-radius: 50%;
+    width: 55px;
+    height: 55px;
+}
+
+.profilebtn{
+    margin-left: auto;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: left;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1vh;
+    margin-right: 1vw;
+    max-width: 90%;
+    padding: 1vh 2vw;
+}
+
+.profilebtn p{
+    padding-left: 0.5vw;
+    padding-right: 2vw;
+}
+
+.profilebtn img{
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.username{
+    font-size: 12px;
+    color:#767979;
+    font-weight: normal;
+}
+
+.more_icon{
+    font-family: Arial, FontAwesome;
+}
+
+.mid_side{
+    width: 600px;
+    min-width: 600px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    overflow: scroll;
+    border-right: 1px solid #212327;
+    border-left: 1px solid #212327;
+}
+
+.feed_header{
+    padding: 2vh 1vw;
+    border-bottom: 1px solid #212327;
+}
+
+.tweet_area{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.tweet_area .profile_pic{
+    width: 55px;
+    height: 55px;
+    margin-right: 15px;
+}
+
+.tweet_input{
+    background-color: transparent;
+    outline: none;
+    border: none;
+    width: 90%;
+    height: 100px;
+    color: white;
+    font-size: 16px;
+    border-bottom: 2px solid black;
+}
+
+.tweet_input::placeholder{
+    font-size: 20px;
+}
+
+.tweet_input:focus{
+    border-bottom: 2px solid #212327;
+}
+
+.delete_tweet{
+    width: fit-content;
+    height: fit-content;
+    float:right;
+    background-color: black;
+    margin: 0;
+    padding: 0;
+}
+
+.add_tweet{
+    margin-left: 4vw;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 1vh;
+}
+
+.addtweet_btn{
+    background-color: #134D77;
+    color:rgb(125, 125, 125);
+    font-size: 14px;
+    font-weight: bold;
+    width: 80px;
+    padding: 1vh 0;
+    margin: 0;
+}
+
+.tweet{
+    padding: 2vh 1vw;
+    display: flex;
+    flex-direction: row;
+    border-bottom: 1px solid #212327;
+    display: none;
+}
+
+.tweet_content{
+    width: 100%;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
+.tweet_user{
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.tweet_text{
+    font-size: 14px;
+}
+
+.tweet_image{
+    margin-top: 10px;
+    width: 100%;
+    max-height: 100%;
+    border-radius: 20px;
+    border: 1px solid #212327
+}
+
+.actions{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 12px;
+    color:rgb(125, 125, 125)
+}
+
+.like_btn{
+    max-width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background-color: black;
+    margin-right: 5px
+}
+
+.likes_number{
+    margin-top: 15px;
+}
+
+.right_side{
+    width: 450px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    position: sticky;
+}
+  
+.search{
+    max-width: 18rem;
+    background-color: #212327;
+    border: 1px solid #212327;
+    outline: none;
+    border-radius: 50px;
+    padding: 1.4vh 2vw;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    margin: 0 1.5vw;
+    margin-top: 5px;
+    font-family:Arial, FontAwesome;
+}
+
+.search::placeholder{
+    font-size: 14px;
+    font-weight:thin;
+}
+
+.search:focus {
+    border:1px solid #1A8CD8;
+    color: white;
+    background-color: black;
+}
+
+.search_result{
+    max-width: 18rem;
+    height: fit-content;
+    background-color: #212327;
+    border: 1px solid #212327;
+    border-radius: 50px;
+    padding: 1.4vh 2vw;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    margin: 2vh 1.5vw;
+    display: none;
+    list-style-type: none;
+}
+
+.search_result li{
+    height: 3vh;
+    padding: 2vh 2vw;
+}
+
+.search_result li:hover{
+    background-color: #2e3137;
+    color: white;
+}
+  
+.tweet_modal_content{
+    background-color: rgb(16, 16, 16);
+    margin: 10% auto;
+    padding: 2vw;
+    border: none;
+    width: 28rem;
+    height: 12rem;
+    border-radius: 20px;
+}
+
+.tweet_modal_content .tweet_input{
+    border-bottom: 2px solid rgb(16, 16, 16);
+}
+
+.tweet_modal_content .tweet_input:focus{
+    border-bottom: 2px solid #212327;
+}
+
+.button_title{
+    display: flex;
+    flex-direction: row;
+}
+
+/*Logout Pop out design*/
+/* Popup container */
+.popup {
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+  
+.popup .popuptext {
+    visibility: hidden;
+    width: 15vw;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 100%;
+    right: 0;
+    margin-right: 0.5vw;
+    box-shadow: 1px 1px 4px #595D61;
+    display: flex;
+    flex-direction: column;
+}
+  
+.popup .popuptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: black;
+    box-shadow: #555;
+}
+  
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s
+}
+
+.logout{
+    margin-top: 1vh;
+    max-width: 100%;
+    height: 50px;
+    border-radius: 0;
+    padding: 0;
+    background-color: transparent;
+    color:white;
+    text-align: left;
+    font-weight: normal;
+    justify-content: left;
+    align-items: center;
+    padding-left: 10px;
+}
+
+.logout .username{
+    color:white;
+    padding-left: 5px;
+}
+
+.logout:hover{
+    background-color: #0e0e0e;
+}
+  
+/* Add animation (fade in the popup) */
+@-webkit-keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+  
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity:1 ;}
+}
+/*End of Popup*/
+/*End of feed page*/
+
+/*Start of Profile page*/
+.top_bar{
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+    margin-top: 10px;
+    align-items: center;
+}
+
+.back{
+    background-color: transparent;
+    color: white;
+    width: 40px;
+    height: 40px;
+    font-weight: normal;
+    font-size: 20px;
+    text-align: center;
+    margin: 0;
+    margin-right: 2vw;
+    margin-left: 5px;
+}
+
+.back:hover{
+    background-color:#212327 ;
+}
+
+.back .icon{
+    padding: 0;
+}
+
+.profile_header{
+    border-bottom: 1px solid #212327;
+    height: fit-content;
+}
+
+.profile{
+    position: relative;
+    top: 0;
+    left: 0;
+}
+
+.cover{
+    position: relative;
+    top: 15px;
+    left: 0;
+    max-height: 200px;
+    height: 5%;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+.profile_image{
+    position: absolute;
+    top: 55%;
+    left: 10px;
+    max-width: 130px;
+    max-height: 130px;
+    width: 45%;
+    height: 45%;
+    border-radius: 50%;
+    border: 5px solid black;
+}
+
+.profile_content{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.edit_profile{
+    margin-left: auto;
+    width: fit-content;
+    padding: 1vh 1vw;
+    color: white;
+    margin-right: 5px
+}
+
+.profile_info{
+    margin-top: 2vh;
+    padding: 2vh 1vw;
+}
+
+.bio{
+    font-size: 14px;
+    margin: 1vh 0;
+}
+
+.followers{
+    font-size: 14px;
+    color:#595D61;
+    background-color: transparent;
+    margin: 0;
+    padding: 0;
+    text-align: right;
+    width: fit-content;
+}
+
+.followers:hover{
+    color:#1A8CD8;
+}
+
+.followers_count{
+    font-weight: bold;
+    color: white;
+    padding:0 5px;
+}
+
+.edit_content{
+    box-shadow: 6px 6px 6px #202020;
+    background-color: black;
+    margin: 10% auto;
+    border: none;
+    width: 30rem;
+    height: 32rem;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.editprofile_header{
+    padding: 1vh 1vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    color: white;
+    width: 95%;
+}
+
+.editprofile_header .whitebtn{
+    width: 4rem;
+    margin: 0;
+}
+
+.edit_title{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 8vw;
+    justify-content: space-between;
+}
+
+.edit_content input{
+    width: 26vw;
+    height: 5vh;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.edit_content #bio{
+    height: 8vh;
+}
+
+input[type=image]{
+    height: 60%;
+    width: 100%;
+}
+
+.hover_effect:hover{
+    filter: brightness(50%);
+}
+/*End of Profile page*/
+
+/*Start of Followings page*/
+.user_result{
+    max-width: 100%;
+    height: fit-content;
+    border-radius: 50px;
+    padding: 1vh 1vw;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+    margin: 2vh 1.5vw;
+    list-style-type: none;
+}
+
+.user_result li{
+    height: 5vh;
+    padding: 1vh 1vw;
+    text-align: center;
+    width: 50vw;
+    background-color: #2e3137;
+}
+
+.user_result li:hover{
+    background-color: #181a1d;
+    color: white;
+}
+
+.follower_buttons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.follower_buttons button{
+    border-radius: 0;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+.follower_buttons button:hover{
+    color: #1A8CD8;
+}
+/*End of Followings page*/
+
+@media screen and (max-width: 1250px) {
+    .left_side{
+        width: 90px;
+        min-width: 75px;
+    }
+
+    .button_title{
+        display: none;
+    }
+
+    .icon{
+        padding: 0;
+    }
+
+    .pages{
+        border-radius: 50%;
+        height: 50px;
+        width: 50px;
+        text-align: center;
+        padding: 0;
+    }
+
+    .tweetbtn{
+        height: 50px;
+        width: 50px;
+        font-size: 12px;
+    }
+
+    .buttons{
+        width: 80%;
+    }
+}
+
+@media screen and (max-width:1000px){
+    .dir_col{
+        flex-direction: column;
+    }
+    
+    .login_side{
+        order: 1;
+        margin-bottom: 3rem;
+        height: 57%;
+        padding-left: 15%;
+    }
+
+    .hero_side{
+        width: 100%;
+        height: 100%;
+        align-items: flex-end;
+        order: 2;
+        height: 43%;
+    }
+
+    .logo{
+        padding: 4rem 0 2rem 0;
+    }
+
+    .title{
+        font-size: 3rem;
+    }
+
+    h2{
+        font-size: 1.5rem;
+    }
+
+    ul{
+        text-align: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+    li{
+        padding: 4px 8px;
+    }
+
+    .right_side{
+        display: none;
+    }
+
+    .mid_side{
+        margin-right: 2vw;
+        min-width: 0;
+    }
+
+    .logout{
+        font-size: 12px;
+    }
+
+    .logout .username{
+        display: none;
+    }
+
+    .account_info .profile_pic{
+        width: 25px;
+        height: 25px;
+    }
+
+    .tweet_user{
+        font-size: 12px;
+        font-weight: bold;
+    }
+}
+
+@media screen and (max-width:680px){
+    .login_side{
+        padding-left: 2rem;
+    }
+
+    .modal_content{
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 100%;
+    }
+
+    .edit_content{
+        margin-left: auto;
+        margin-right: auto;
+        width: 100%;
+        height: 100%;
+    }
+
+    .edit_content input{
+        width: 50vw;
+        height: 5vh;
+    }
+
+    .edit_title{
+        width: 20vw;
+    }
+
+    .signin_content{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        color: white;
+    }
+
+    .signup_content{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+        color: white;
+    }
+
+    .registerbtn{
+        width: 50%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

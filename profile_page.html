@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="icon" href="images/twitter_logo.png" type="image/icon type" width="50%">
+    <link rel="stylesheet" href="styles/style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <title>Profile</title>
+</head>
+<body>
+    <div class="main_container">
+        <div class="left_side">
+            <div class="buttons">
+                <button id="twitter_button" class="mainpage_btn"><img src="images/twitter_logo_white.png" width="40px" height="40px"></button>
+                <button id="home_button" class="pages"><img class="icon" src="images/home.png"><span class="button_title">Home</span></button>
+                <button id="profile_button" class="pages"><img class="icon" src="images/profile.png"><span class="button_title">Profile</span></button>
+                <button id="showtweet_btn" class="bluebtn tweetbtn">Tweet</button>
+            </div>
+
+            <div class="popup">
+                <button id="popup_btn" class="pages profilebtn">
+                    <img class="profile_picture" src="images/profile.webp" alt="profile image">
+                    <div class="button_title">
+                        <span class="name"></span>
+                        <span class="username">@BruceWayne</span></p>
+     
+                        <span>...</span>
+                    </div>
+                </button>
+                <div class="popuptext" id="myPopup">
+                    <div class="account_info">
+                        <img class="profile_pic" src="images/profile.webp" alt="profile image">
+                        <p class="tweet_user"><span class="name"></span><br/>
+                            <span class="username">@BruceWayne</span></p>
+                    </div>
+
+                    <button id="logout_button" class="logout">Log out <span class="username">@BruceWayne</span></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="mid_side">
+            <div class="profile_header">
+                <div class="top_bar">
+                    <button id="back_button" class="back"><img src="images/arrowleft.png" src="back icon" width="15px" height="15px"></button>
+                    <div class="bar_content">
+                        <h4><span class="name"></span></h4>
+                    </div>
+                </div>
+
+                <div class="profile">
+                    <img class="cover" src="images/cover.webp" alt="cover img">
+
+                    <div class="profile_content">
+                        <img class="profile_image profile_picture"src="images/profile.webp" alt="profile picture">
+                        <button id="editmodal_btn" class="edit_profile blackbtn">Edit Profile</button>
+                    </div>
+                </div>
+
+                <div class="profile_info">
+                    <p class="tweet_user"><span class="name"></span><br/>
+                        <span class="username"></span></p>
+
+                    <p id="bio" class="bio"></p>
+
+                    <button id="followers" class="followers"><span class="followers_count">75</span> Following <span class="followers_count">75</span> Followers</button>
+                </div>
+            </div>
+
+            <div id="tweets_section">
+                <div id="tweet" class="tweet">
+                    <img class="profile_pic profile_picture" src="images/profile.webp" alt="profile image">
+    
+                    <div class="tweet_content">
+                        <button class="delete_tweet delete_btn"><img src="images/trash.png" alt="delete image" width="20px" height="20px"></button>
+                        <p class="tweet_user"><span class="name"></span><span class="username">@BruceWayne</span></p>
+                        <p class="tweet_text"></p>
+                        <img class="tweet_image" src="" alt="tweet image">
+    
+                        <div class="actions">
+                            <button class="like_btn"><img id="like_image" src="images/heart.png" alt="like button" width="18px" height="18px"></button>
+                            <span class="likes_number">0</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="right_side">
+            <input id="search_input" class="search" type="text" name="search" placeholder="&#xF002;    Search Twitter">
+
+            <ul id="search_result" class="search_result">
+            </ul>
+        </div>
+    </div>
+    
+    <div id="tweet_modal" class="modal">
+        <!-- Modal content -->
+        <div class="tweet_modal_content">
+            <span id="close_tweet" class="close">&times;</span>
+
+            <div class="tweet_area">
+                <img class="profile_pic profile_picture" src="images/profile.webp" alt="profile image">
+                <input id="tweet_input" class="tweet_input" type="text" placeholder="What's happening?">
+            </div>
+
+            <div class="add_tweet">
+                <label>
+                    <input id="added_image" accept="image/*" type="file" multiple hidden/>
+                    <img src="images/image.png" width="20px" height="20px">
+                </label>
+
+                <button id="add_tweet" class="addtweet_btn">Tweet</button>
+            </div>
+        </div>    
+    </div>
+
+    <!--Start of Edit profile modal-->
+    <div id="editprofile_modal" class="modal">
+        <!-- Modal content -->
+        <div class="edit_content">
+            <div class="editprofile_content">
+                <div class="editprofile_header">
+                    <div class="edit_title">
+                        <span id="close_edit" class="close">&times;</span>
+                        <h3>Edit Profile</h3>
+                    </div>
+            
+                    <button id="save_edit" class="whitebtn">Save</button>
+                </div>
+
+                <div class="profile">
+                    <label for="image">
+                        <input type="file" name="image" id="profile_image" style="display:none;"/>
+                        <img class="cover hover_effect " src="images/cover.webp" alt="cover image"/>
+                    </label>
+
+                    <div class="profile_content">
+                        <label for="image2">
+                            <input type="file" name="image2" style="display:none;"/>
+                            <img class="profile_image hover_effect profile_picture" src="images/profile.webp" alt="profile picture">
+                        </label>
+                    </div>
+                </div>
+
+                <div class="textfield">
+                    <input id="new_name" type ="text" required>
+                    <label>Name</label>
+                </div>
+
+                <div class="textfield">
+                    <input id="bio" type ="text" required>
+                    <label>Bio</label>
+                </div>  
+            </div> 
+        </div>   
+    </div>
+
+    <script src="js/profile_script.js"></script>
+    <script src="js/feed_profile.js"></script>
+</body>
+</html>
