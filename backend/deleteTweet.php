@@ -18,6 +18,21 @@ if(!isset($tweet_id) || empty($tweet_id)){
     return;   
 }    
 
+$query = $mysqli->prepare("SELECT id FROM tweets WHERE id = ?");
+$query->bind_param("s", $tweet_id);
+$query->execute();
+
+$query->store_result();
+$num_rows = $query->num_rows;
+    
+if($num_rows == 0){
+    http_response_code(400);
+    echo json_encode([
+        'error' => 400,
+        'message' => "ID doesn't Exist"]);
+    return;
+}
+
 $query = $mysqli->prepare("DELETE FROM `tweets` WHERE id = ?"); 
 $query->bind_param("s", $tweet_id);
 $query->execute();
@@ -26,7 +41,7 @@ $query = $mysqli->prepare("DELETE FROM `images` WHERE tweet_id = ?");
 $query->bind_param("s", $tweet_id);
 $query->execute();
 
-$json = json_encode($array["status"] = "success!");
+$json = json_encode($array["status"] = ['message' => "success!"]);
 echo $json;
 
 $query->close();
