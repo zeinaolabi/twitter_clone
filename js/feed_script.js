@@ -18,13 +18,14 @@ const profilePictures = document.querySelectorAll("#profile_picture");
 const userNames = document.querySelectorAll(".name");
 const usernames = document.querySelectorAll(".username");
 
-
+//On tweet header click on the button to post a tweet
 addTweetButton.onclick = function(){
     postTweet(tweetInput.value, addedImage);
     tweetInput.value = "";
     addedImage.value = "";
 }
 
+//On tweet modal click on the button to post a tweet
 addTweetButton2.onclick = function(){
     postTweet(tweetInput2.value, addedImage2);
     tweetModal.style.display = "none";
@@ -32,8 +33,9 @@ addTweetButton2.onclick = function(){
     addedImage2.value = "";
 }
 
-
+//Post tweet function
 const postTweet = (tweet, addedImage) => {
+    //Save added image value and files
     const addedImageValue = addedImage.value;
     const [file] = addedImage.files;
 
@@ -42,10 +44,12 @@ const postTweet = (tweet, addedImage) => {
         return
     }
 
+    //If tweet length is more than 280, do nothing
     if(tweet.length > 280){
         return
     }
 
+    //Send post tweet request to the server
     const sendTweetRequest = (base64Image) => {
         //Send data to the server using fetch
         fetch(postTweetAPI, {
@@ -60,23 +64,27 @@ const postTweet = (tweet, addedImage) => {
             data =>  {
             //Show error
             if (data.message == "") {
-                //Do nothing - TO BE EDITED
+                //Do nothing
                 return
             }
     
+            //Copy tweet modal and display it
             let originalTweet = document.getElementById("tweet");
             let clone = originalTweet.cloneNode(true);
             clone.style.display ="flex";
-
-            let profile = clone.querySelector(".profile_pic");
-            profile.src = localStorage.getItem("profile_picture");
-      
             clone.id= data.tweet_id;
             clone.classList.add("tweet");
+
+            //Set the profile picture to the user's
+            let profile = clone.querySelector(".profile_pic");
+            profile.src = localStorage.getItem("profile_picture");
+    
+            //Change paragraph data according to tweet
             let paragraph = clone.querySelector(".tweet_text");
             paragraph.textContent = tweet;
             let image = clone.querySelector(".tweet_image");
     
+            //If the tweet includes an image, show it
             if(addedImageValue == ""){
                 image.style.display = "none";
             }
@@ -85,6 +93,8 @@ const postTweet = (tweet, addedImage) => {
                     image.src = URL.createObjectURL(file);
                 }
             }
+
+            //Add tweet after the original clone
             originalTweet.after(clone);
         })
     }
@@ -95,10 +105,12 @@ const postTweet = (tweet, addedImage) => {
         sendTweetRequest(event.currentTarget.result)
     }, false);
 
-    if (file) {
+    if(file){
+        //If the tweet includes an image, add it
         reader.readAsDataURL(file);
     }
     else{
+        //If the tweet doesn't include an image, send null
         sendTweetRequest(null);
     }
 }
@@ -140,7 +152,6 @@ const viewTweets = () =>{
 
             //Get Profile picture
             let profilePic = clone.querySelector(".profile_pic");
-        
             if(data[i].profile_picture != null){
                 profilePic.src = "data:image/png;base64," + data[i].profile_picture;
             }
@@ -159,33 +170,39 @@ const viewTweets = () =>{
             likes.textContent = data[i].likes_count;
             likes.id = data[i].id;
 
-            //Get like buttons
+            //Get like buttons, and save the tweet id as an attribute
             let likeButton = clone.querySelector(".like_btn");
             likeButton.setAttribute('data', data[i].tweet_id);
 
+            //Check if the post is liked or not
             fetch(likedTweetAPI + data[i].id)
             .then(response => response.json())
             .then(data =>{
 
+                //Save the result of the tweet is liked or not, change the button accordingly
                 likeButton.setAttribute('isLiked', data);
                 likeButton.querySelector("#like_image").src = data ? "images/redheart.png" : "images/heart.png";
 
+                //When like button is clicked, send a request to the server
                 likeButton.addEventListener('click', (event) => {
                     let tweet_id = event.currentTarget.getAttribute('data');
                     let isLiked = event.currentTarget.getAttribute('isLiked') === "true";
                     const tweetApi = isLiked ? unlikeTweetAPI : likeTweetAPI;
+
                     //Send data to the server using fetch
                     fetch(tweetApi + tweet_id)
                     .then(response=>response.json())
                     .then(data =>  {
-                        //Show error
+
                         if (data.error !== undefined) {
                             //Do nothing
                             return
                         }
 
+                        //Change the number of likes on like/unlike
                         likes.textContent = isLiked? parseInt(likes.textContent) -1 : parseInt(likes.textContent) + 1;
 
+                        //Change button image on click
                         likeButton.setAttribute('isLiked', !isLiked);
                         likeButton.querySelector("#like_image").src = isLiked ? "images/heart.png" : "images/redheart.png";
                     })
@@ -201,32 +218,33 @@ const viewTweets = () =>{
 }
 
 const getUserInfo = () =>{
-
+    //Get request to get the users info from the server
     fetch(getInfoAPI)
     .then(response => response.json())
     .then(data =>{
-        //Show error
         if (data.error !== undefined) {
             //Do nothing
             return
         }
 
+        //If a profile image is assigned, save it in the local storage
         if(data.profile_picture != null){
             profilePictures.forEach(profilePicture => profilePicture.src = 'data:image/jpeg;base64,' + data.profile_picture);
             localStorage.setItem("profile_picture", 'data:image/jpeg;base64,' + data.profile_picture)
         }
 
-        if(data.username != null){
-            usernames.forEach(username => username.textContent = "@" + data.username);
-            localStorage.setItem("username", data.username)
-        }
-
+        //If a name is assigned, save it in the local storage
         if(data.name != null){
             userNames.forEach(userName => userName.textContent = data.name);
         }
+
+        //Save username in local storage
+        usernames.forEach(username => username.textContent = "@" + data.username);
+        localStorage.setItem("username", data.username)
     })
 }
 
+//Call view tweets and get user info functions
 viewTweets();
 getUserInfo();
 
