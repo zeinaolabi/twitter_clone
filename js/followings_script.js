@@ -28,7 +28,7 @@ const getFollowers = () => {
         }
 
         for(let i = 0; i < Object.keys(data).length; i++){
-            //Create a list item and add it results
+            //Create a list item and add results to it
             let li = document.createElement("li");
             li.appendChild(document.createTextNode(data[i].username));
             li.id = data[i].user_id
@@ -49,9 +49,7 @@ const getFollowings = () => {
         }
 
         for(let i = 0; i < Object.keys(data).length; i++){
-            console.log(data)
-            console.log(data[i].username)
-            //Create a list item and add it results
+            //Create a list item and add results to it
             let li = document.createElement("li");
             li.appendChild(document.createTextNode(data[i].username));
             li.id = data[i].user_id
