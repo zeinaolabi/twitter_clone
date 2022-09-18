@@ -96,7 +96,6 @@ const viewTweets = () =>{
 
         //Loop over the response
         for(let i = 0; i < Object.keys(data).length; i++){
-            console.log(data)
             //Make a clone of the tweet model
             let originalTweet = document.getElementById("tweet");
             let clone = originalTweet.cloneNode(true);
@@ -146,6 +145,8 @@ const viewTweets = () =>{
                             //Do nothing
                             return
                         }
+
+                        likes.textContent = isLiked? parseInt(likes.textContent) -1 : parseInt(likes.textContent) + 1;
 
                         likeButton.setAttribute('isLiked', !isLiked);
                         likeButton.querySelector("#like_image").src = isLiked ? "images/heart.png" : "images/redheart.png";
