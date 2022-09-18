@@ -920,10 +920,12 @@ input[type=image]{
     height: 5vh;
     padding: 1vh 1vw;
     text-align: center;
+    width: 50vw;
+    background-color: #2e3137;
 }
 
 .user_result li:hover{
-    background-color: #2e3137;
+    background-color: #181a1d;
     color: white;
 }
 
