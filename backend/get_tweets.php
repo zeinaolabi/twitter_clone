@@ -15,10 +15,12 @@ if(!isset($userID) || empty($userID)){
     return;
 }
 
-$query = $mysqli->prepare("SELECT tweet, image, tweets.id
+$query = $mysqli->prepare("SELECT tweet, image, tweets.id, users.username, users.name, users.profile_picture
 FROM tweets
 LEFT JOIN images
 ON tweets.id = images.tweet_id
+INNER JOIN users
+on users.id = tweets.user_id
 WHERE tweets.user_id IN (
     SELECT followeduser_id
     FROM users
@@ -46,6 +48,7 @@ while($a = $array->fetch_assoc()){
     $tweets[$a["id"]]['likes_count'] = 0;
     $tweets[$a["id"]]['tweet_id'] = $a["id"];
 }
+var_dump($tweets);
 
 $query = sprintf("SELECT COUNT(*) as count, likes.tweet_id
 FROM likes
